@@ -3,18 +3,25 @@ from .models import Job
 from django.core.paginator import Paginator
 from .form import ApplyForm , JobForm
 from django.urls import reverse
+from .filters import JobFilter
 # Create your views here.
 
 def jobs_list(request):
 
     jobs_list = Job.objects.all()
 
+     ##filters
+    myfilter = JobFilter(request.GET,queryset=jobs_list)
+    jobs_list = myfilter.qs
+
     paginator = Paginator(jobs_list, 5) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+   
     context = {'jobs': page_obj, 
-               'forcount': jobs_list}
+               'forcount': jobs_list,
+               'myfilter': myfilter,}
     return render(request,'job/jobs_list.html',context)
 
 
