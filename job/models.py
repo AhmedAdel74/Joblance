@@ -8,6 +8,18 @@ JOB_TYPE = (
     ('Part Time','Part Time'),
 )
 
+CURRENT_CITY = (
+    ('Cairo','Cairo'),
+    ('Giza','Giza'),
+    ('ALexandria','ALexandria'),
+    ('Ismailia','Ismailia'),
+)
+
+CURRENT_COUNTRY = (
+     ('Egypt','Egypt'),
+)
+
+
 class Job(models.Model):
     owner = models.ForeignKey(User, related_name='job_owner', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -19,6 +31,8 @@ class Job(models.Model):
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=0) 
     category = models.ForeignKey('Category',on_delete=models.CASCADE)
+    country = models.CharField(max_length= 15 , choices=CURRENT_COUNTRY)
+    city = models.CharField(max_length= 15 , choices=CURRENT_CITY)
 
     slug = models.SlugField(blank=True, null=True)
 
@@ -28,7 +42,10 @@ class Job(models.Model):
 
     def __str__(self):
             return self.title
+    class Meta:
+        ordering = ['-published_at']
 
+        
 class Category(models.Model):
     name = models.CharField(max_length=25)
 
