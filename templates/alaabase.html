@@ -1,0 +1,55 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobLance</title>
+    <link rel="icon" href="../Main/img/png-file-svg-white-headphone-png-icon-3090554-pngtube-headphones-icon-png-920_916.jpg" />
+
+    <!--google font link-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+
+    <!--bootsrap css file-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+    <!--fontawessome css file-->
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}" />
+    <!--magnific pop up-->
+    <link rel="stylesheet" href="{% static 'vendor/Magnific-Popup/dist/magnific-popup.css'%}" />
+    <!--owl carousel files-->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.carousel.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.theme.default.min.css'%}" />
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet" />
+    <!--custom css file-->
+    <link rel="stylesheet" href="{% static 'css/alaastyle.css'%}" />
+    <!--responsive css file-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css'%}" />
+
+
+
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+
+    {% block body%}
+    
+    {% endblock body%}
+
+    <!--jquery bootstrap-->
+    <script src="{% static './js/jquery.3.4.1.js'%}"></script>
+    <!--bootsrap js file-->
+    <script src="{% static 'js/alaabootstrap.min.js'%}"></script>
+    <!--isotope js library-->
+    <script src="{% static 'vendor/isotope/isotope.min.js'%}"></script>
+    <!--magnific pop up -->
+    <script src="{% static 'vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js'%}"></script>
+    <!--owl carousel js-->
+    <script src="{% static 'vendor/owl-carousel/js/owl.carousel.min.js'%}"></script>
+    <!--aos-->
+    <script src="{% static 'js/aos.js'%}"></script>
+    <!--custom js file-->
+    <script src="{% static 'js/alaamain.js'%}"></script>
+</body>
+</html>

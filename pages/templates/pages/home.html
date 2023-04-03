@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobLance</title>
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alaastyle2.css' %}">
+</head>
+<body>
+    <div class="involver">
+
+    <div class="heading">
+        <h1>Start Now!</h1>
+    </div>
+
+    <div class="pickone">
+        
+        <div class="pick">
+            <div class="sora">
+                <img src="{% static 'img/Hiring.png' %}" alt="Hiring" link="">
+            </div>
+            <div class="akaname">
+                <h4>Providing a job?</h4>
+            </div>
+            <a href="{% url 'jobs:add_job' %}">
+                <div class="zorar">
+                     <button> Post Job </button>
+                 </div>
+             </a>
+            
+        </div>
+
+        <div class="pick">
+            <div class="sora">
+                <img src="{% static 'img/LookingforAJob.png' %}" alt="Looking" >
+            </div>
+            <div class="akaname">
+                <h4>Looking for a job?</h4>
+            </div>
+            <div class="zorar">
+                <a href="{% url 'jobs:job_list' %}"><button> Find Job </button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
