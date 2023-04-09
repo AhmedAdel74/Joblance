@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     #my apps
     'job',
     'pages',
+    'profiles',
+    'registration',
     'bootstrap4',
     'django_filters',
 ]

@@ -63,7 +63,8 @@
                                             <a href="{% url 'jobs:job_details' job.slug %}"><h4>{{job.title}}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
-                                                    <p> <i class="fa fa-map-marker"></i> {{job.city}}, {{job.country}}</p>
+                                                    
+                                                    <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}}, {{job.country}}</p>
                                                 </div>
                                                 <div class="location">
                                                     <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>

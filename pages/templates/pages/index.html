@@ -16,18 +16,21 @@
                     <h4 class="title-text text-uppercase">Let's start a new journey</h4>
                     <div class="site-buttons">
                         <div class="d-flex flex-row flex-wrap">
-                            <a href= "../in and out/Register.html"><button type="button"
+                            <a href= "{% url 'registration:signup' %}"><button type="button"
                   class="btn button primary-button mr-4 text-uppercase"> Register Now
                 </button></a>
-              <a href="../in and out/Login.html"><button type="button"
-                  class="btn button secondary-button text-uppercase"> Login
-                </button></a>
+                
+              <a href="{% url 'registration:signin' %}">
+                
+                <button type="button" class="btn button secondary-button text-uppercase"> Login </button>
+            
+            </a>
                 
             </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
-          <img class="img-fluid" src="{% static 'img/banner/bannerimg.png' %}" class="banner-image" alt="banner-img"/>
+          <img class="img-fluid" src="{% static 'img/banner/banner.png' %}" class="banner-image" alt="banner-img"/>
         </div>
       </div>
     </div>
@@ -66,7 +69,7 @@
             You are in the right place.
             </p>
           </div>
-          <a href=""><button
+          <a href="{% url 'registration:signup' %}"><button
             type="button"
             class="btn button primary-button text-uppercase"> Get Started </button></a>
                         </div>
@@ -235,9 +238,9 @@
                     <div class="col-lg-8 col-md-12 person-say">
                         <h4 class="text-uppercase">Post1</h4>
                         <p class="para">
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
                         </p>
                     </div>
                 </div>
@@ -248,9 +251,9 @@
                     <div class="col-lg-8 col-md-12 person-say">
                         <h4 class="text-uppercase">Post2</h4>
                         <p class="para">
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
                         </p>
                     </div>
                 </div>
@@ -262,9 +265,9 @@
                     <div class="col-lg-8 col-md-12 person-say">
                         <h4 class="text-uppercase">Post3</h4>
                         <p class="para">
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
                         </p>
                     </div>
                 </div>
@@ -275,9 +278,9 @@
                     <div class="col-lg-8 col-md-12 person-say">
                         <h4 class="text-uppercase">Post4</h4>
                         <p class="para">
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
                         </p>
                     </div>
                 </div>
@@ -288,9 +291,9 @@
                     <div class="col-lg-8 col-md-12 person-say">
                         <h4 class="text-uppercase">Post5</h4>
                         <p class="para">
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
                         </p>
                     </div>
                 </div>
@@ -301,9 +304,9 @@
                     <div class="col-lg-8 col-md-12 person-say">
                         <h4 class="text-uppercase">Post6</h4>
                         <p class="para">
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
                         </p>
                     </div>
                 </div>

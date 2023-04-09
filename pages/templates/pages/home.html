@@ -11,43 +11,43 @@
     <link rel="stylesheet" href="{% static 'css/alaastyle2.css' %}">
 </head>
 <body>
-    <div class="involver">
+    <div class="container">
 
-    <div class="heading">
+    <div class="header">
         <h1>Start Now!</h1>
     </div>
 
-    <div class="pickone">
+    <div class="chooses">
         
-        <div class="pick">
-            <div class="sora">
+        <div class="choose">
+            <div class="image">
                 <img src="{% static 'img/Hiring.png' %}" alt="Hiring" link="">
             </div>
-            <div class="akaname">
+            <div class="name">
                 <h4>Providing a job?</h4>
             </div>
             <a href="{% url 'jobs:add_job' %}">
-                <div class="zorar">
+                <div class="btn">
                      <button> Post Job </button>
                  </div>
              </a>
             
         </div>
 
-        <div class="pick">
-            <div class="sora">
+        <div class="choose">
+            <div class="image">
                 <img src="{% static 'img/LookingforAJob.png' %}" alt="Looking" >
             </div>
-            <div class="akaname">
+            <div class="name">
                 <h4>Looking for a job?</h4>
             </div>
-            <div class="zorar">
+            <div class="btn">
                 <a href="{% url 'jobs:job_list' %}"><button> Find Job </button></a>
             </div>
         </div>
     </div>
 </div>
 <script src="{% static 'js/all.min.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main.js"' %}'></script>
 </body>
 </html>
