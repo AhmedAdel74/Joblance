@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mayarstyle.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <!--main Templete-3 Css File-->
+    <link rel="stylesheet" href="{% static 'css/morsy.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/morsy.min.css' %}">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+  <Header>
+    <div class="container">
+        <a href="{% url 'pages:home' %}" class="logo">
+            <h2 style="color: #fff;">Joblance</h2>  
+        </a>
+        <ul class="links"> 
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#features">Features</a></li>
+            <li>
+                <a href="#" class="io">Other Links</a>
+                <!-- Start Megamenu -->
+                <div class="mega_menu">
+                    <div class="image">
+                        <img src="{% static 'img/images/megamenu.png' %}" alt="">
+                    </div>
+                    <ul class="links_one">
+                         <li>
+                            <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
+                         </li>
+                         <li>
+                            <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
+                         </li>
+                         <li>
+                            <a href="#services"><i class="far fa-building fa-fw"></i> Services</a>
+                        </li>
+                         <li>
+                            <a href="#our-skills"><i class="far fa-check-circle fa-fw"></i> Our Skills</a>
+                         </li>
+                         <li>
+                            <a href="#work-steps"><i class="far fa-clipboard fa-fw"></i> How It Works</a>
+                         </li>
+                    </ul>
+                    <ul class="links_one">
+                        <li>
+                            <a href="#events"><i class="far fa-calendar-alt fa-fw"></i> Events</a>
+                        </li>
+                        <li>
+                            <a href="#pricing"><i class="fas fa-server fa-fw"></i> Pricing Plans</a>
+                        </li>
+                        <li>
+                            <a href="#video"><i class="far fa-play-circle fa-fw"></i> Top Videos</a>
+                        </li>
+                        <li>
+                            <a href="#stats"><i class="far fa-chart-bar fa-fw"></i> Stats</a>
+                        </li>
+                        <li>
+                            <a href="#discount"><i class="fas fa-percent fa-fw"></i> Request A Discount</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Megamenu -->
+            </li>
+        </ul>
+    </div>
+</Header>
+
+  <center>
+    <div class="profile">
+        
+       <div class="card">
+            
+           <div class="image">
+            <img src="{{ user.profile.image.url }}" alt="face">
+           </div>
+           <div class="content">
+            <h2>{{profile.user}}</h2>
+            </div>
+        
+            <div class="main">
+            <p><i class="fa fa-envelope ">
+            </i>  {{profile.user.email}}</p>
+            <p><i class="fa fa-phone">
+            </i>  {{profile.phone_number}}</p>
+            <p><i class="fas fa-map-marker-alt fa-fw" aria-hidden="true">
+            </i>  {{profile.city}}</p>
+            <p><i class="fa fa-calendar-o">
+            </i>  {{profile.dob}}</p>
+            <p><i class="fa fa-user ">
+            </i>  {{profile.gender}}</p>
+            </div>
+           <br/>
+           
+           <div class="info" style="margin-top: 0px;
+           padding-top: 0px;
+           padding :10px;
+           color: black;
+           font-size: 1rem;
+           border-radius: 5px;
+           border: 1px solid black;
+           height: 450px;
+           text-align: left;
+           display: block">
+            <h4>Education</h4>
+              {{profile.education}}
+            <hr>
+            <h4>Experience</h4>
+              {{profile.experience}}
+            <hr>
+            <h4>Language</h4>
+              {{profile.language}}
+            <hr>
+            <h4>Technical Skills</h4>
+              {{profile.tecskill}}
+              <hr>
+              <h4>Soft Skills</h4>
+              {{profile.softskill}}
+           </div>
+                <br/>
+                 
+                   <a href="{% url 'profiles:edite' %}">
+                   <button class="edite" >Edite Profile</button >
+                   </a>
+                   <br/>
+                  <a href="{% url 'profiles:password_change' %}">
+                  <button class="pass" >Change Password</button >
+                  </a>
+                
+           
+        </div>
+    </div>
+
+</center>
+
+</body>
+
+</html>

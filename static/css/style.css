@@ -2511,7 +2511,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  background-image: url(../img/banner/banner2.jpg);
 }
 
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
@@ -2542,7 +2542,7 @@ h3 {
 /* line 19, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
 .bradcam_area h3 {
   font-size: 56px;
-  color: #fff;
+  color: #1fb38e;
   font-weight: 400;
   margin-bottom: 0;
   text-transform: capitalize;

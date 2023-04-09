@@ -28,7 +28,7 @@
                                     <a href="#"><h4>{{job.title}}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                            <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}}, {{job.country}}</p>
                                         </div>
                                         <div class="location">
                                             <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
@@ -65,7 +65,7 @@
                                 <li>Published on: <span>{{job.published_at|date:'d M o'}}</span></li>
                                 <li>Vacancy: <span>{{job.vacancy}}</span></li>
                                 <li>Salary: <span>{{job.salary}} K/m</span></li>
-                                <li>Location: <span>California, USA</span></li>
+                                <li>Location: <span>{{job.city}}, {{job.country}}</span></li>
                                 <li>Job Nature: <span> {{job.job_type}}</span></li>
                             </ul>
                         </div>
@@ -112,5 +112,4 @@
             </div>
         </div>
     </div>
-    {% endblock body %}
-    <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+{% endblock body %}

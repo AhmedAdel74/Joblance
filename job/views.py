@@ -21,7 +21,8 @@ def jobs_list(request):
    
     context = {'jobs': page_obj, 
                'forcount': jobs_list,
-               'myfilter': myfilter,}
+               'myfilter': myfilter,
+               }
     return render(request,'job/jobs_list.html',context)
 
 

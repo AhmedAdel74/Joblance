@@ -1,0 +1,322 @@
+{% extends 'alaabase.html' %}
+{% load static %}
+
+{% block body %} 
+
+
+<main class="site-main">
+
+    <!-- start heading -->
+    <section class="site-banner" data-aos="fade-up" data-aos-duration="500">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 site-title">
+                    <h3 class="title-text">WELCOME TO</h3>
+                    <h1 class="title-text text-uppercase">Joblance</h1>
+                    <h4 class="title-text text-uppercase">Let's start a new journey</h4>
+                    <div class="site-buttons">
+                        <div class="d-flex flex-row flex-wrap">
+                            <a href= "{% url 'registration:signup' %}"><button type="button"
+                  class="btn button primary-button mr-4 text-uppercase"> Register Now
+                </button></a>
+                
+              <a href="{% url 'registration:signin' %}">
+                
+                <button type="button" class="btn button secondary-button text-uppercase"> Login </button>
+            
+            </a>
+                
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <img class="img-fluid" src="{% static 'img/banner/banner.png' %}" class="banner-image" alt="banner-img"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--end banner -->
+<br><br>
+
+
+  <!-- start about   -->
+
+  <section id="About"
+    class="about"
+    data-aos="fade-down"
+    data-aos-offset="500"
+    data-aos-easing="ease-in-sine"
+  >
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="about-image">
+            <img src="{% static 'img/about.png' %}" alt="about" class="img-fluid" />
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 about-title">
+          <h2 class="text-uppercase pt-5">
+            <span>joblance</span>
+          </h2>
+          <div class="paragraph py-4 w-75 ">
+            <p class="para font-roboto">
+              Now, Finding the best job for you will be faster and easier!
+            </p>
+            <p class="para font-roboto">
+            With joblance simple and powerful tools let you source, screen, and hire faster. <br><br>
+            Don't worry! <br>
+            You are in the right place.
+            </p>
+          </div>
+          <a href="{% url 'registration:signup' %}"><button
+            type="button"
+            class="btn button primary-button text-uppercase"> Get Started </button></a>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- end about-->
+
+
+
+   <!--start highlights --------------------->
+  <section 
+    class="highlights-area"
+    data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="1500">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center highlights-title">
+            <h1><strong>How To Start?</strong> </h1> <br><br>
+          <h2 class="text-uppercase title-text  ">1. Create your free account</h2>
+          <p class="para font-roboto">
+            All you need is your email address to create an account and start building your job post.</p>
+        </div>
+        <div class="col-lg-12 text-center highlights-title">
+          <h2 class="text-uppercase title-text  ">2. Build your job post</h2>
+          <p class="para font-roboto">
+            Then just add a title, description, and location to your job post, and you're ready to go.</p>
+        </div>
+        <div class="col-lg-12 text-center highlights-title">
+          <h2 class="text-uppercase title-text  ">3. Post your job </h2>
+          <p class="para font-roboto">
+            After you post your job use our state of the art tools to help you find your dream talent.</p>
+        </div>
+      </div>
+      <br><br>
+
+    
+
+   <!-------------------------------------end highlights --------------------->
+  
+
+  <!--------------------start pictures area--------------------------->
+  <section id="Photos"
+    class="pictures-area"
+    data-aos="fade-up"
+    data-aos-offset="500"
+    data-aos-easing="ease-in-sine">
+    <div class="container ">
+      <div class="priject-title pb-5">
+        <h1 class="text-uppercase title-h1 ">About us</h1>
+      </div>
+      <div class="button-groub">
+        <button type="button" class="active" id="btn1">All</button>
+        <button type="button" data-filter=".old">Group1</button>
+        <button type="button" data-filter=".colored">Group2</button>
+
+      </div>
+      <div class="row grid">
+        <div class="col-lg-4 col-md-6 col-sm-12 element-item old">
+          <div class="pictures">
+            <div class="img">
+              <a class="test-popup-link" href="img/portfolio/old1.png">
+                <img src="{% static 'img/portfolio/old1.png' %}" alt="old1" /></a>
+            </div>
+            <div class="title py-4">
+              <h4 class="text-uppercase"></h4>
+              <span class="text-secondary"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 element-item old">
+                        <div class="pictures">
+                            <div class="img">
+                                <a class="test-popup-link" href="img/portfolio/old2.png">
+                                    <img src="{% static 'img/portfolio/old2.png' %}" alt="old2" /></a>
+                            </div>
+                            <div class="title py-4">
+                                <h4 class="text-uppercase"></h4>
+                                <span class="text-secondary"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-sm-12 element-item old">
+                        <div class="pictures">
+                            <div class="img">
+                                <a class="test-popup-link" href="img/portfolio/old3.png">
+                                    <img src="{% static 'img/portfolio/old3.png' %}" alt="old3" /></a>
+                            </div>
+                            <div class="title py-4">
+                                <h4 class="text-uppercase"></h4>
+                                <span class="text-secondary"></span>
+                            </div>
+                        </div>
+                    </div>                  
+
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 element-item colored">
+                        <div class="pictures">
+                            <div class="img">
+                                <a class="test-popup-link" href="img/portfolio/colored1.png">
+                                    <img src="{% static 'img/portfolio/colored1.png' %}" alt="colored1" /></a>
+                            </div>
+                            <div class="title py-4">
+                                <h4 class="text-uppercase"></h4>
+                                <span class="text-secondary"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 element-item colored">
+                        <div class="pictures">
+                            <div class="img">
+                                <a class="test-popup-link" href="img/portfolio/colored2.png">
+                                    <img src="{% static 'img/portfolio/colored2.png' %}" alt="colored2" /></a>
+                            </div>
+                            <div class="title py-4">
+                                <h4 class="text-uppercase"></h4>
+                                <span class="text-secondary"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 element-item colored">
+                        <div class="pictures">
+                            <div class="img">
+                                <a class="test-popup-link" href="img/portfolio/colored3.png">
+                                    <img src="{% static 'img/portfolio/colored3.png' %}" alt="colored3" /></a>
+                            </div>
+                            <div class="title py-4">
+                                <h4 class="text-uppercase"></h4>
+                                <span class="text-secondary"></span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!--------------------end pictures area-------------------------->
+
+
+
+    <!--------------------start they say -------------------------->
+
+    <section class="they-say" data-aos="fade-up" data-aos-offset="500" data-aos-easing="ease-in-sine">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <div class="they-say-title">
+                        <h1 class="text-uppercase title-h1">Change the wolrd in one tap</h1>
+                        <p class="para">
+                            Here's your chance to the world, get it now!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container carousel py-lg-5">
+            <div class="owl-carousel owl-theme">
+                <div class="person row">
+                    <div class="col-lg-4 col-md-12 person-img">
+                        <img src="{% static 'img/testimonials/t7.jpg' %}" alt="img1" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 person-say">
+                        <h4 class="text-uppercase">Post1</h4>
+                        <p class="para">
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                        </p>
+                    </div>
+                </div>
+                <div class="person row">
+                    <div class="col-lg-4 col-md-12 person-img">
+                        <img src="{% static 'img/testimonials/t9.jpg' %}" alt="img1" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 person-say">
+                        <h4 class="text-uppercase">Post2</h4>
+                        <p class="para">
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                        </p>
+                    </div>
+                </div>
+
+                <div class="person row">
+                    <div class="col-lg-4 col-md-12 person-img">
+                        <img src="{% static 'img/testimonials/t13.jpg' %}" alt="img1" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 person-say">
+                        <h4 class="text-uppercase">Post3</h4>
+                        <p class="para">
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                        </p>
+                    </div>
+                </div>
+                <div class="person row">
+                    <div class="col-lg-4 col-md-12 person-img">
+                        <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 person-say">
+                        <h4 class="text-uppercase">Post4</h4>
+                        <p class="para">
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                        </p>
+                    </div>
+                </div>
+                <div class="person row">
+                    <div class="col-lg-4 col-md-12 person-img">
+                        <img src="{% static 'img/testimonials/t11.jpg' %}" alt="img1" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 person-say">
+                        <h4 class="text-uppercase">Post5</h4>
+                        <p class="para">
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                        </p>
+                    </div>
+                </div>
+                <div class="person row">
+                    <div class="col-lg-4 col-md-12 person-img">
+                        <img src="{% static 'img/testimonials/t10.png' %}" alt="img1" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 person-say">
+                        <h4 class="text-uppercase">Post6</h4>
+                        <p class="para">
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                            tttttttttttttttttttttttttttttttttttttt
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------------end they say-------------------------->
+
+
+</main>
+
+{% endblock body %}
+
