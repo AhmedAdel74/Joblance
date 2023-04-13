@@ -1,9 +1,99 @@
-{% extends 'alaabase.html' %}
 {% load static %}
 
-{% block body %} 
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobLance</title>
+    <link rel="icon" href="../Main/img/png-file-svg-white-headphone-png-icon-3090554-pngtube-headphones-icon-png-920_916.jpg" />
+
+    <!--google font link-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+
+    <!--bootsrap css file-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+    <!--fontawessome css file-->
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}" />
+    <!--magnific pop up-->
+    <link rel="stylesheet" href="{% static 'vendor/Magnific-Popup/dist/magnific-popup.css'%}" />
+    <!--owl carousel files-->
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.carousel.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel/css/owl.theme.default.min.css'%}" />
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet" />
+    <!--custom css file-->
+    <link rel="stylesheet" href="{% static 'css/alaastyle.css'%}" />
+    <!--responsive css file-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
 
 
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/morsy.css' %}">
+    <link rel="stylesheet" href="{% static 'css/morsy.min.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <Header>
+        <div class="container">
+            <a href="{% url 'pages:index' %}" class="logo">
+                <h2 style="color: #fff;">Joblance</h2>  
+            </a>
+            <ul class="links"> 
+                <li><a href="{% url 'pages:home' %}">Home</a></li>
+                <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
+                <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
+                <li>
+                    <a href="#" class="io">More</a>
+                    <!-- Start Megamenu -->
+                    <div class="mega_menu">
+                        <div class="image">
+                            <img src="{% static 'img/images/megamenu.png' %}" alt="">
+                        </div>
+                        <ul class="links_one">
+                            <li>
+                                <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
+                             </li>
+                             
+                             <li>
+                                <a href="#services"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                            </li>
+                             
+                            
+                        </ul>
+                        <ul class="links_one">
+                            <li>
+                                <a href="{% url 'profiles:edite' %}"><i class="far fa-chart-bar fa-fw"></i>Edit you profile</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
+                             </li>
+                        </ul>
+                    </div>
+                    <!-- End Megamenu -->
+                </li>
+            </ul>
+            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                <div class="Appointment">
+                    
+                    {% if request.user.is_authenticated %}
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+    </Header>
+    <br>
+    <br>
 <main class="site-main">
 
     <!-- start heading -->
@@ -16,9 +106,11 @@
                     <h4 class="title-text text-uppercase">Let's start a new journey</h4>
                     <div class="site-buttons">
                         <div class="d-flex flex-row flex-wrap">
-                            <a href= "{% url 'registration:signup' %}"><button type="button"
-                  class="btn button primary-button mr-4 text-uppercase"> Register Now
-                </button></a>
+                            <a href= "{% url 'registration:signup' %}">
+                                <button type="button"class="btn button primary-button mr-4 text-uppercase">
+                                     Register Now
+                                </button>
+                            </a>
                 
               <a href="{% url 'registration:signin' %}">
                 
@@ -29,6 +121,8 @@
             </div>
           </div>
         </div>
+        <br>
+        <br>
         <div class="col-lg-6 col-md-12">
           <img class="img-fluid" src="{% static 'img/banner/banner.png' %}" class="banner-image" alt="banner-img"/>
         </div>
@@ -121,7 +215,7 @@
     data-aos-easing="ease-in-sine">
     <div class="container ">
       <div class="priject-title pb-5">
-        <h1 class="text-uppercase title-h1 ">About us</h1>
+        <h1 class="text-uppercase title-h1 ">Craftsmen</h1>
       </div>
       <div class="button-groub">
         <button type="button" class="active" id="btn1">All</button>
@@ -231,92 +325,112 @@
 
         <div class="container carousel py-lg-5">
             <div class="owl-carousel owl-theme">
-                <div class="person row">
-                    <div class="col-lg-4 col-md-12 person-img">
-                        <img src="{% static 'img/testimonials/t7.jpg' %}" alt="img1" />
-                    </div>
-                    <div class="col-lg-8 col-md-12 person-say">
-                        <h4 class="text-uppercase">Post1</h4>
-                        <p class="para">
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                        </p>
-                    </div>
-                </div>
-                <div class="person row">
-                    <div class="col-lg-4 col-md-12 person-img">
-                        <img src="{% static 'img/testimonials/t9.jpg' %}" alt="img1" />
-                    </div>
-                    <div class="col-lg-8 col-md-12 person-say">
-                        <h4 class="text-uppercase">Post2</h4>
-                        <p class="para">
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                        </p>
-                    </div>
-                </div>
+                {% for job in jobs %}
 
-                <div class="person row">
-                    <div class="col-lg-4 col-md-12 person-img">
-                        <img src="{% static 'img/testimonials/t13.jpg' %}" alt="img1" />
-                    </div>
-                    <div class="col-lg-8 col-md-12 person-say">
-                        <h4 class="text-uppercase">Post3</h4>
-                        <p class="para">
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                        </p>
-                    </div>
-                </div>
                 <div class="person row">
                     <div class="col-lg-4 col-md-12 person-img">
                         <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
                     </div>
                     <div class="col-lg-8 col-md-12 person-say">
-                        <h4 class="text-uppercase">Post4</h4>
+                        <h4 class="text-uppercase">{{job.title}}</h4>
                         <p class="para">
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
+                            {{job.description}}
                         </p>
                     </div>
                 </div>
-                <div class="person row">
-                    <div class="col-lg-4 col-md-12 person-img">
-                        <img src="{% static 'img/testimonials/t11.jpg' %}" alt="img1" />
-                    </div>
-                    <div class="col-lg-8 col-md-12 person-say">
-                        <h4 class="text-uppercase">Post5</h4>
-                        <p class="para">
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                        </p>
-                    </div>
-                </div>
-                <div class="person row">
-                    <div class="col-lg-4 col-md-12 person-img">
-                        <img src="{% static 'img/testimonials/t10.png' %}" alt="img1" />
-                    </div>
-                    <div class="col-lg-8 col-md-12 person-say">
-                        <h4 class="text-uppercase">Post6</h4>
-                        <p class="para">
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                            tttttttttttttttttttttttttttttttttttttt
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
     <!--------------------end they say-------------------------->
 
-
 </main>
+<footer>
+    <div class="container">
+        <div class="box">
+           <h3 style="color: #fff;">Joblance</h3>
+           <br>
+           <ul class="social">
+            <li>
+                <a href="#" class="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="youtube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </li>
+           </ul>
+           <br>
+            <p class="text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
+            </p>
+        </div>
+        <div class="box">
+            <ul class="links">
+                <li>
+                    <a href="{% url 'features:members' %}">Members</a>
+                </li>
+                <li>
+                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                </li>
+                <li>
+                    <a href="#others profile from ahmed sharaf">Hire Now</a>
+                </li>
+                <li>
+                    <a href="#craftspage from mohamed">Craftsmen</a>
+                </li>
+                <li>
+                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="line">
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                <div class="info">
+                Cairo, Egypt
+                </div>
+            </div>
+            <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">
+                        Working Hours: 08:00-04:00
+                    </div>
+                
+            </div>
+            <div class="line">
+                <i class="fas fa-phone-volume fa-fw"></i>
+                <div class="info">
+                    +201151261692
+                    +201095625946
+                </div>
+            </div>
+        </div>
 
-{% endblock body %}
-
+    </div>
+    <p class="copyright">Made With &lt;3 By Joblance</p>
+    
+</footer>
+<!--jquery bootstrap-->
+<script src="{% static './js/jquery.3.4.1.js'%}"></script>
+<!--bootsrap js file-->
+<script src="{% static 'js/alaabootstrap.min.js'%}"></script>
+<!--isotope js library-->
+<script src="{% static 'vendor/isotope/isotope.min.js'%}"></script>
+<!--magnific pop up -->
+<script src="{% static 'vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js'%}"></script>
+<!--owl carousel js-->
+<script src="{% static 'vendor/owl-carousel/js/owl.carousel.min.js'%}"></script>
+<!--aos-->
+<script src="{% static 'js/aos.js'%}"></script>
+<!--custom js file-->
+<script src="{% static 'js/alaamain.js'%}"></script>
+</body>
+</html>

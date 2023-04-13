@@ -162,13 +162,17 @@ button{
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="pass">
 
-        <button type="submit">Log In</button>
+        <button type="submit">Login</button>
         <!-- <input type="button" value=""> -->
         <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div> -->
-        <a href="{% url 'registration:signup' %}" >Create a account</a>
+        <br>
+        <br>
+        <a>Don't have an account</a>
+        <br>
+        <a href="{% url 'registration:signup' %}" >Create one now</a>
     </form>
 </body>
 </html>

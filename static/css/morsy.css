@@ -151,7 +151,7 @@ ul {
 header {
   position: relative;
   box-shadow: 0 0 10px #2c8c6a;
-  background-color: rgb(58, 143, 120);
+  background-color: #388087;
 }
 header .container {
     display: flex;
@@ -765,15 +765,6 @@ header .links .menu:hover .mega_menu {
         border-width: 170px 1000px 170px 0;
     }
 }
-.features .quality .image::before {
-    background-color: rgb(244 64 54 / 60%);
-}
-.features .time .image::before {
-    background-color: rgb(0 150 136 / 60%) ;
-}
-.features .passion .image::before {
-    background-color: rgb(3 169 244 / 60%);
-}
 
 .features .box .content {
     display: flex;
@@ -804,15 +795,15 @@ header .links .menu:hover .mega_menu {
 }
 
 .features .quality .content h2::after {
-    background-color: #f44036;
+    background-color: #388087;
 }
 
 .features .time .content h2::after {
-    background-color: #009688;
+    background-color: #388087;
 }
 
 .features .passion .content h2::after {
-    background-color: #03a9f4;
+    background-color: #388087;
 }
 .features .box a {
     position: relative;
@@ -835,11 +826,11 @@ header .links .menu:hover .mega_menu {
     -o-transition: var(--main-transition);
 }
 .features .quality a{
-   border: 3px solid #f44036;
-   color: #f44036;
+   border: 3px solid #388087;
+   color: #388087;
 }
 .features .quality a {
-    background: linear-gradient(to right, #f44036 50%, white 50%);
+    background: linear-gradient(to right, #388087 50%, white 50%);
     background-size: 200% 100%;
     background-position: right bottom;
 }
@@ -850,11 +841,11 @@ header .links .menu:hover .mega_menu {
 }
     
 .features .time a {
-    border: 3px solid #009688;
-    color: #009688 ; 
+    border: 3px solid #388087;
+    color: #388087 ; 
 }
 .features .time a {
-    background: linear-gradient(to right, #009688 50%,white 50%);
+    background: linear-gradient(to right, #388087 50%,white 50%);
     background-size: 200% 100%;
     background-position: right bottom;
 }
@@ -865,12 +856,12 @@ header .links .menu:hover .mega_menu {
 }
 
 .features .passion a {
-    border: 3px solid #03a9f4;
-    color: #03a9f4 ;
+    border: 3px solid #388087;
+    color: #388087 ;
 }
 
 .features .passion a {
-    background: linear-gradient(to right, #03a9f4 50%, white 50%);
+    background: linear-gradient(to right, #388087 50%, white 50%);
     background-size: 200% 100%;
     background-position: right bottom;
 }
@@ -1892,7 +1883,7 @@ header .links .menu:hover .mega_menu {
 }
 
 /* End discount */
-/* Start Footer */
+/* Start footer */
 footer {
     background-color: black;
     padding: 70px 0 0;
@@ -1910,6 +1901,8 @@ footer .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 40px;
+    
+    
 }
 footer .box {
     color: white;
@@ -2030,7 +2023,9 @@ footer .copyright {
 }
 
 
-/* End Footer */
+/* End footer */
+
+
 
 
 
