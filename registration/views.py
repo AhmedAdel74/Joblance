@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render,HttpResponse,redirect
 from .models import Login
 from django.contrib.auth import authenticate,login,logout
@@ -17,18 +18,19 @@ def SignupPage(request):
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
 
-        if pass1!=pass2:
-            return HttpResponse("Your password and confirm password do not match!!")
-        elif checkExistUser(request)==True:
-            return HttpResponse("The username or email already exists. Please choose a different username and email!!")
-        elif uname=="":
-            return HttpResponse("Username is required.")
+        if uname=="":
+            messages.warning(request, "Username is required.")
         elif pass1=="":
-            return HttpResponse("Password is required.")
+            messages.warning(request, "Password is required.")
+        elif checkExistUser(request)==True:
+            messages.info(request, f"We regret to inform you that the selected username or email, '{uname}', is already registered in our system. We kindly request that you choose a different username and email address.")
+        elif pass1!=pass2:
+            messages.warning(request, "Your password and confirm password do not match!!")
         else:
 
             my_user=Login(username=uname,email=email,password=pass1)
             my_user.save()
+            messages.success(request, "The registration on the site was successful.")
             return redirect('registration:signin')
         
 
@@ -43,12 +45,13 @@ def LoginPage(request):
 
         # loop through all User objects in the Login module
         for user in Login.objects.all():
-            if user.username == username and user.password == password:
+            if (user.username == username or user.email==username) and user.password == password:
             # username and password exist, so return a success response
                 return redirect('jobs:job_list')
     
             # username and/or password do not exist, so return an error response
-        return HttpResponse("Username or password is incorrect!")
+        messages.warning(request, f"Authentication failed due to either an incorrect username or password, or the non-existence of a user with the username '{username}'.")
+        return render(request, 'registration\login.html')
     else:
         return render(request, 'registration\login.html')
     
