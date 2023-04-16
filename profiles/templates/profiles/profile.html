@@ -20,7 +20,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 
 <body>
@@ -88,17 +88,36 @@
             </div>
         
             <div class="main">
-            <p><i class="fa fa-envelope ">
+            <p style="color:black"><i class="fa fa-envelope ">
             </i>  {{profile.user.email}}</p>
-            <p><i class="fa fa-phone">
+            <p style="color:black"><i class="fa fa-phone">
             </i>  {{profile.phone_number}}</p>
-            <p><i class="fas fa-map-marker-alt fa-fw" aria-hidden="true">
+            <p style="color:black"><i class="fas fa-map-marker-alt fa-fw" aria-hidden="true">
             </i>  {{profile.city}}</p>
-            <p><i class="fa fa-calendar-o">
+            <p style="color:black" ><i class="fa fa-calendar-o">
             </i>  {{profile.dob}}</p>
-            <p><i class="fa fa-user ">
+            <p style="color:black"><i class="fa fa-user ">
             </i>  {{profile.gender}}</p>
             </div>
+           <br/>
+           <div class="us" style="margin-top: 0px;
+           padding-top: 0px;
+           padding :10px;
+           color: black;
+           font-size: 1rem;
+           border-radius: 5px;
+           border: 1px solid black;
+           height: 230px;
+           text-align: left;
+           display: block">
+           <h3>CV</h3>
+          <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 30px;" ></i> <strong style="padding-left: 10px;"><a href="{{ profile.cv.url }}" style="color: black;text-decoration:none;
+          ">{{profile.cv}}</a></strong>
+              <hr>
+           <h3>Certification</h3>
+           <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 30px;"></i> <strong style="padding-left: 10px;"><a href="{{ profile.file.url }}" style="color: black;
+           text-decoration:none;">{{profile.file}}</a></strong>
+           </div>
            <br/>
            
            <div class="infomayar" style="margin-top: 0px;
@@ -125,7 +144,7 @@
               <hr>
               <h4>Soft Skills</h4>
               {{profile.softskill}}
-           </div>
+            </div>
                 <br/>
                  
                    <a href="{% url 'profiles:edite' %}">
@@ -143,6 +162,10 @@
 </center>
 </section>
 
+<br/>
+<br/>
+<br/>
+<br/>
 <br>
 <br>
 <br>
@@ -167,11 +190,7 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<section>
+<section style="margin-top: 250px;">
 <footer>
     <div class="container">
         <div class="box">

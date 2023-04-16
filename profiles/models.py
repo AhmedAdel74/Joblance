@@ -15,12 +15,12 @@ def image_upload(instance,filename):
 
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'user_{0}/{1}'.format(instance.user.id, filename)
+    return '{1}'.format(instance.user.id, filename)
 
 class Profile(models.Model):
     ## بتستدعى ال attribute دة
     ## 
-    image =models.ImageField(default='default.jpg', upload_to=image_upload )
+    image =models.ImageField(default='user.png', upload_to=image_upload )
     user =models.OneToOneField(User, on_delete=models.CASCADE)
     slug=models.SlugField(null=True ,blank=True)
     email=models.EmailField(max_length=30 , default='none')
@@ -35,7 +35,8 @@ class Profile(models.Model):
     experience=models.CharField(default='none',max_length=400)
     bio=models.TextField(default='none')
     dob=models.DateField(blank=True,null=True)
-
+    cv=models.FileField(upload_to=user_directory_path ,max_length=40,default='none')
+    file=models.FileField(upload_to=user_directory_path ,max_length=40,default='none')
 
     
 
