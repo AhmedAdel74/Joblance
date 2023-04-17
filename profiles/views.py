@@ -106,9 +106,6 @@ def others(request):
     paginator   = Paginator(others,2)
     page_number = request.GET.get('page')
     page_obj    = paginator.get_page(page_number)
-    
-    
-    
     context     = {'users' : page_obj }
     return render(request,'profiles/others.html',context)
 
