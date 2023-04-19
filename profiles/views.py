@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
 
@@ -99,7 +100,8 @@ def others(request):
     return render(request,'profiles/others.html',context)
 
 def other(request, id):
-    return render(request,'profiles/other.html',{'user' : Profile.objects.get(id = id)}) 
+    profile = get_object_or_404(Profile, id=id)
+    return render(request,'profiles/other.html',{'user' : profile}) 
 
 
 def search(request):
