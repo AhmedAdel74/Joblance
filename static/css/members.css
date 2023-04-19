@@ -151,7 +151,7 @@ ul {
 header {
   position: relative;
   box-shadow: 0 0 10px #2c8c6a;
-  background-color: rgb(58, 143, 120);
+  background-color: #388087;
 }
 header .container {
     display: flex;
