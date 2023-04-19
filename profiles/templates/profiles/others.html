@@ -20,14 +20,12 @@
         {%for x in users %}
         <div class="box">
             <map name="AllArea"><area shape="rect" coords="1000,1000,1000,1000"></map>
-            <h3>{{x.id}}</h3>
-            <img src="{{ x.image.url }}" usemap="#AllArea" class="rounded-circle" href="{% url 'other' x.id|add:1 %}">
+            <img src="{{ x.image.url }}" usemap="#AllArea" class="rounded-circle" href="{% url 'profiles:other' x.id %}">
             
-            <a href="{% url 'other' x.id %}"><h2>{{x.fname}} {{x.lname}}</h2></a>
+            <a href="{% url 'profiles:other' x.id %}"><h2>{{x.user}}</h2></a>
             
-            <p>{{x.job_title}}</p>
+            <p>{{x.tecskill}}</p>
             <div class="options">
-                <a href="#">Connect</a>
                 <a href="https://www.facebook.com/messages/t/100084004640131">Message</a>
             </div>
         </div>

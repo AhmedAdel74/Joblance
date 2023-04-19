@@ -39,7 +39,8 @@ class Profile(models.Model):
     file=models.FileField(upload_to=user_directory_path ,max_length=40,default='none')
 
     
-
+    class Meta:
+        ordering = ['-id']
 
 
     def __str__(self):
