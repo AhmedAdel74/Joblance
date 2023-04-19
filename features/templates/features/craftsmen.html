@@ -1,0 +1,406 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+       Joblance
+    </title>
+    <!--Render All Elements Normally-->
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <!--main Templete-3 Css File-->
+    <link rel="stylesheet" href="{% static 'css/craftsmen.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+   
+</head>
+<body>
+    <Header>
+        <div class="container">
+            <a href="{% url 'pages:index' %}" class="logo">
+                <h2 style="color: #fff;">Joblance</h2>  
+            </a>
+            <ul class="links"> 
+                <li><a href="{% url 'pages:home' %}">Home</a></li>
+                <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
+                <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
+                <li>
+                    <a href="#" class="io">More</a>
+                    <!-- Start Megamenu -->
+                    <div class="mega_menu">
+                        <div class="image">
+                            <img src="{% static 'img/images/megamenu.png' %}" alt="">
+                        </div>
+                        <ul class="links_one">
+                            <li>
+                                <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
+                             </li>
+                             
+                             <li>
+                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                            </li>
+                             
+                            
+                        </ul>
+                        <ul class="links_one">
+                            <li>
+                                <a href="{% url 'profiles:edite' %}"><i class="far fa-chart-bar fa-fw"></i>Edit you profile</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
+                             </li>
+                        </ul>
+                    </div>
+                    <!-- End Megamenu -->
+                </li>
+            </ul>
+            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                <div class="Appointment">
+                    
+                    {% if request.user.is_authenticated %}
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
+                    </div>
+                    {% else %}
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'registration:signin' %}" style="float: right;">Login</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+    </Header>
+
+
+    <!--Start landing-->
+    <div class="landing">
+        <div class="container">
+            <div class="text">
+                <h1>Welcome, To Craftsmen World</h1>
+                <p>We offer you craftsmen services at the highest level, with high quality and appropriate prices.</p>
+
+            </div>
+            <div class="image">
+                <img src="{% static 'img/images/landing-image.png' %}" alt="">
+            </div>
+        </div>
+        <a href="#article" class="go_down">
+        </a>
+    </div>
+    <!--End landing-->
+
+
+    <!--Start Articles-->
+    <div class="articles" id="articles">
+      <div class="title">
+        Craftsmen
+      </div>
+        <div class="container">
+            
+
+            {% for worker in list %}
+            <div class="box">
+                <img src="{{ worker.image.url }} " alt="">
+                <div class="content">
+                    <h2>{{worker.name}}</h2>
+                    <p>{{worker.profession}}</p>
+                </div>
+            
+                <div class="info">
+                    <div class="box">
+                        <div class="line">
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            <div class="info">
+                            {{worker.address}}
+                            </div>
+                        </div>
+                        <div class="line">
+                                <i class="far fa-clock fa-fw"></i>
+                                <div class="info">
+                                    {{worker.working_hours}}
+                                </div>
+                            
+                        </div>
+                        <div class="line">
+                            <i class="fas fa-phone-volume fa-fw"></i>
+                            <div class="info">
+                                {{worker.phone_number}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            {% endfor %}
+
+
+    </div>
+    </div>
+
+    <div class="spikes"></div>
+    <!--End Articles-->
+
+    
+    <!--Start Gallery-->
+    <div class="gallery" id="gallery">
+        <div class="title">
+           Gallery
+        </div>
+        <div class="container">
+            <div class="box">
+             <div class="image"> 
+                <img src="images/Pottery3.jpg" alt="">
+             </div>
+            </div>
+            <div class="box">
+              <div class="image">
+                <img src="images/Tarabish1.jpeg" alt="">
+              </div>
+            </div>
+            <div class="box">
+              <div class="image">
+                <img src="images/Pottery1.jpg" alt="">
+              </div>
+            </div>
+            <div class="box">
+              <div class="image">
+                <img src="images/_EGYPT-CULTURE-FEZ.webp" alt="">
+              </div>  
+            </div>
+            <div class="box">
+              <div class="image">  
+                <img src="images/Tarabish3.jpg" alt="">
+              </div>  
+            </div>
+            <div class="box">
+              <div class="image"> 
+                <img src="images/Tarabish2.jpg" alt="">
+              </div>  
+            </div>
+        </div>
+    </div>
+    <!--End Gallery-->
+
+
+    <div class="spikes"></div>
+
+    
+    <!-- Start Testimonials-->
+    
+     <div class="testimonials" id="testimonials">
+        <div class="title">
+            Testimonials
+        </div>
+        <div class="container">
+            <div class="box">
+                
+                <img src="images/WickerMaker.jpg" alt="">
+                
+                <h2>Elhossiny</h2>
+                <span class="job">Wicker Maker</span>
+                <div class="rate">
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class=" fa-regular fa-star"></i>
+                
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
+                ducimus</p>
+
+
+            </div>
+            <div class="box">
+               
+                 <img src="images/BashoutMaker.jpg" alt="">
+                
+                <h2>Mohamed Ibrahim</h2>
+                <span class="job">
+                    Bashout Maker
+                </span>
+                <div class="rate">
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
+                ducimus</p>
+
+
+            </div>
+            <div class="box">
+               
+                <img src="images/123.webp" alt="">
+                
+                <h2>Shady Nabil</h2>
+                <span class="job">Pottery Maker</span>
+                <div class="rate">
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
+                ducimus</p>
+
+            </div>
+            <div class="box">
+                
+                <img src="images/PotteryMaker2.jpg" alt="">
+                
+                <h2>Awlad Khalil</h2>
+                <span class="job">Pottery Maker</span>
+                <div class="rate">
+                    <i class="filled  fa-regular fa-star"></i>
+                    <i class="filled  fa-regular fa-star"></i>
+                    <i class="filled  fa-regular fa-star"></i>
+                    <i class="filled  fa-regular fa-star"></i>
+                    <i class="filled  fa-regular fa-star"></i>
+                
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
+                ducimus</p>
+
+            </div>
+            <div class="box">
+                
+                <img src="images/CarpentryMaker.jpg" alt="">
+                
+                <h2>Ragab</h2>
+                <span class="job">Carpentry Maker</span>
+                <div class="rate">
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
+                ducimus</p>
+            </div>
+            <div class="box">
+               
+                <img src="images/MourningMaker.jpg" alt="">
+               
+                <h2>Hamada</h2>
+                <span class="job">Mourning Maker</span>
+                <div class="rate">
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="filled fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
+                ducimus</p>
+
+            </div>
+
+        </div>
+
+     </div>
+    <!--End Testimonials-->
+
+    <div class="spikes"></div>
+
+    <!--Start Footer-->
+    <footer>
+        <div class="container">
+            <div class="box">
+               <h3 style="color: #fff;">Joblance</h3>
+               <br>
+               <ul class="social">
+                <li>
+                    <a href="#" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+               </ul>
+               <br>
+                <p class="text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
+                </p>
+            </div>
+            <div class="box">
+                <ul class="links">
+                    <li>
+                        <a href="{% url 'features:members' %}">Members</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                    </li>
+                    <li>
+                        <a href="#others profile from ahmed sharaf">Hire Now</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">
+                    Cairo, Egypt
+                    </div>
+                </div>
+                <div class="line">
+                        <i class="far fa-clock fa-fw"></i>
+                        <div class="info">
+                            Working Hours: 08:00-04:00
+                        </div>
+                    
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        +201151261692
+                        +201095625946
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <p class="copyright">Made With &lt;3 By Joblance</p>
+        
+    </footer>
+    <!--End Footer-->
+
+   
+
+
+
+</body>
+</html>
