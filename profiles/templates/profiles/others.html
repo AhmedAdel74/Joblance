@@ -20,8 +20,8 @@
         {%for x in users %}
         <div class="box">
             <map name="AllArea"><area shape="rect" coords="1000,1000,1000,1000"></map>
-
-            <img src="{{ x.image.url }}" usemap="#AllArea" class="rounded-circle" href="{% url 'other' x.id %}">
+            <h3>{{x.id}}</h3>
+            <img src="{{ x.image.url }}" usemap="#AllArea" class="rounded-circle" href="{% url 'other' x.id|add:1 %}">
             
             <a href="{% url 'other' x.id %}"><h2>{{x.fname}} {{x.lname}}</h2></a>
             
