@@ -60,10 +60,6 @@ def LoginPage(request):
             return render(request, 'registration\login.html')
     else:
         return render(request, 'registration\login.html')
-    
-def LogoutPage(request):
-    logout(request)
-    return redirect('login')
 
 def checkExistUser(request):
     username = request.POST['username']

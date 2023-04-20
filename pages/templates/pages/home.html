@@ -40,6 +40,7 @@
     </head>
 <body>
     <Header>
+
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
                 <h2 style="color: #fff;">Joblance</h2>  
@@ -86,11 +87,15 @@
                     <div class="d-none d-lg-block">
                         <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
                     </div>
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'pages:logout' %}" class="btn btn-primary" >Logout</a>
+                    </div>
                     {% else %}
                     <div class="d-none d-lg-block">
                         <a class="boxed-btn3" href="{% url 'registration:signin' %}" style="float: right;">Login</a>
                     </div>
                     {% endif %}
+
                 </div>
             </div>
         </div>

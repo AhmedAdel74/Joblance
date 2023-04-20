@@ -3,6 +3,8 @@ from .models import Info
 from django.core.mail import send_mail
 from django.conf import settings
 from job.models import Job
+from django.contrib.auth import authenticate,login,logout
+from django.shortcuts import render,HttpResponse,redirect
 
 # Create your views here.
 
@@ -35,3 +37,7 @@ def send_message(request):
 
     
     return render(request, 'pages/feedback.html', {'myinfo':myinfo})
+
+def LogoutPage(request):
+    logout(request)
+    return redirect('home')
