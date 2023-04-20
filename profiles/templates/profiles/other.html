@@ -1,41 +1,144 @@
-{%  load static %}
-{% block content %} 
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/other.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mayarstyle.css' %}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <!--main Templete-3 Css File-->
+    <link rel="stylesheet" href="{% static 'css/morsy.css' %}">
+    <!-- Font Awesome -->
+   <link rel="stylesheet" href="{% static 'css/morsy.min.css' %}">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Profile</title>
 </head>
 
-<body>  
-  <center>
-    <div class="profile"> 
+<body>
+    <Header>
+        <div class="container">
+            <a href="{% url 'pages:index' %}" class="logo">
+                <h2 style="color: #fff;">Joblance</h2>  
+            </a>
+            <ul class="links"> 
+                <li><a href="{% url 'pages:home' %}">Home</a></li>
+                <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
+                <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
+                <li>
+                    <a href="#" class="io">More</a>
+                    <!-- Start Megamenu -->
+                    <div class="mega_menu">
+                        <div class="image">
+                            <img src="{% static 'img/images/megamenu.png' %}" alt="">
+                        </div>
+                        <ul class="links_one">
+                            <li>
+                                <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
+                             </li>
+                             
+                             <li>
+                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                            </li>
+                             
+                            
+                        </ul>
+                        <ul class="links_one">
+                            <li>
+                                <a href="{% url 'profiles:edite' %}"><i class="far fa-chart-bar fa-fw"></i>Edit you profile</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
+                             </li>
+                        </ul>
+                    </div>
+                    <!-- End Megamenu -->
+                </li>
+            </ul>
+            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                <div class="Appointment">
+                    
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </Header>
+    <!-- <div id="mydiv">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                        <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <script>
+            setTimeout(() => {
+            const alerts = document.querySelectorAll(".alert");
+            alerts.forEach(alert => {
+                alert.style.display = "none";
+            });
+        }, 4000);
+        </script>
+    </div> -->
+<section>
+  <center >
+    <div class="profile">
+        
        <div class="card">
             
            <div class="image">
-            <img src="{{ user.image.url }}" alt="face">
+            <img src="{{user.image.url }}" alt="face">
            </div>
            <div class="content">
-            <h2>{{user.fname}} {{user.lname}}</h2>
+            <h2>{{user.user}}</h2>
             </div>
         
             <div class="main">
-            <p><i class="fa fa-envelope ">
-            </i> {{user.email}}</p>
-            <p><i class="fa fa-phone">
-            </i> {{user.education}}</p>
-            <p><i class="fa fa-map-marker" aria-hidden="true">
-            </i> {{user.Native_language}}</p>
-            {% if user.cv and user.show_cv%}
-               <a href="{{ user.cv.url }}" target="_blank" style="color: black; font-weight: bold;">{{ user.fname }}'s_cv</a>
-            {% endif %}
+            <p style="color:black"><i class="fa fa-envelope ">
+            </i>  {{user.user.email}}</p>
+            <p style="color:black"><i class="fa fa-phone">
+            </i>  {{user.phone_number}}</p>
+            <p style="color:black"><i class="fas fa-map-marker-alt fa-fw" aria-hidden="true">
+            </i>  {{user.city}}</p>
+            <p style="color:black" ><i class="fa fa-calendar-o">
+            </i>  {{user.dob}}</p>
+            <p style="color:black"><i class="fa fa-user ">
+            </i>  {{user.gender}}</p>
             </div>
            <br/>
+           <div class="us" style="margin-top: 0px;
+           padding-top: 0px;
+           padding :10px;
+           color: black;
+           font-size: 1rem;
+           border-radius: 5px;
+           border: 1px solid black;
+           height: 230px;
+           text-align: left;
+           display: block">
+           <h3>CV</h3>
+          <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 30px;" ></i> <strong style="padding-left: 10px;"><a href="{{ profile.cv.url }}" style="color: black;text-decoration:none;
+          ">{{user.cv}}</a></strong>
+              <hr>
+           <h3>Certification</h3>
+           <i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 30px;"></i> <strong style="padding-left: 10px;"><a href="{{ profile.file.url }}" style="color: black;
+           text-decoration:none;">{{user.file}}</a></strong>
+           </div>
+           <br/>
            
-           <div class="info" style="margin-top: 0px;
+           <div class="infomayar" style="margin-top: 0px;
            padding-top: 0px;
            padding :10px;
            color: black;
@@ -49,21 +152,128 @@
               {{user.education}}
             <hr>
             <h4>Experience</h4>
-              {{user.experiance}}
+              {{user.experience}}
             <hr>
             <h4>Language</h4>
-              {{user.Second_language}}
+              {{user.language}}
             <hr>
             <h4>Technical Skills</h4>
-              {{user.brief}}
+              {{user.tecskill}}
               <hr>
               <h4>Soft Skills</h4>
-              {{profile.softskill}}
-          </div>
+              {{user.softskill}}
+            </div>
+        
         </div>
     </div>
+
 </center>
+</section>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section style="margin-top: 250px;">
+<footer>
+    <div class="container">
+        <div class="box">
+           <h3 style="color: #fff;">Joblance</h3>
+           <br>
+           <ul class="social">
+            <li>
+                <a href="#" class="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="youtube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </li>
+           </ul>
+           <br>
+            <p class="text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
+            </p>
+        </div>
+        <div class="box">
+            <ul class="links">
+                <li>
+                    <a href="{% url 'features:members' %}">Members</a>
+                </li>
+                <li>
+                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                </li>
+                <li>
+                    <a href="#others profile from ahmed sharaf">Hire Now</a>
+                </li>
+                <li>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                </li>
+                <li>
+                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="line">
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                <div class="info">
+                Cairo, Egypt
+                </div>
+            </div>
+            <div class="line">
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">
+                        Working Hours: 08:00-04:00
+                    </div>
+                
+            </div>
+            <div class="line">
+                <i class="fas fa-phone-volume fa-fw"></i>
+                <div class="info">
+                    +201151261692
+                    +201095625946
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <p class="copyright">Made With &lt;3 By Joblance</p>
+    
+</footer>
+</section>
 </body>
 
 </html>
-{% endblock  %}
+{% endblock content %}
