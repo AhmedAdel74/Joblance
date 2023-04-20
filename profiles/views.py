@@ -8,6 +8,11 @@ from .models import Profile
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
+from django.db.models import Q
+
 # Create your views here.
 
 
@@ -74,3 +79,47 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'profiles/change_password.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('edite')
+
+
+
+
+
+
+
+
+
+
+
+        #Sharaf Section
+def others(request):
+    others      = Profile.objects.all()
+    paginator   = Paginator(others,2)
+    page_number = request.GET.get('page')
+    page_obj    = paginator.get_page(page_number)
+    context     = {'users' : page_obj }
+    return render(request,'profiles/others.html',context)
+
+def other(request, id):
+    profile = get_object_or_404(Profile, id=id)
+    return render(request,'profiles/other.html',{'user' : profile}) 
+
+
+def search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        query_list = query.split()
+        # Use the Q object to create a query that searches for the query string
+        # across multiple fields
+        results = Profile.objects.filter(
+            Q(fname__icontains=query_list[0]) |
+            Q(lname__icontains=query_list[0]) |
+            Q(email__icontains=query_list[0])
+        ).distinct()
+        for word in query_list[1:]:
+            results = results.filter(
+                Q(fname__icontains=word) |
+                Q(lname__icontains=word) |
+                Q(email__icontains=word)
+            ).distinct()
+    return render(request, 'profiles/search.html', {'query': query, 'results': results})
