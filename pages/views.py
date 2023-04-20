@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from .models import Info
 from django.core.mail import send_mail
 from django.conf import settings
@@ -40,4 +41,6 @@ def send_message(request):
 
 def LogoutPage(request):
     logout(request)
-    return redirect('home')
+    home_url = reverse('pages:home')
+    print(home_url)  # Add this line to print the URL
+    return redirect(home_url)

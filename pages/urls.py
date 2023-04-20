@@ -6,9 +6,9 @@ from django.conf.urls.static import static
 app_name = 'pages'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('home', views.home, name='home'),
+    path('home/', views.home, name='home'),
     path('feedback', views.send_message, name='feedback'),
-    path('logout/',views.LogoutPage,name='logout'),
+    path('LogoutPage',views.LogoutPage,name='logout'),
 
     ] 
 
