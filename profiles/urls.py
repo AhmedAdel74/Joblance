@@ -16,8 +16,8 @@ urlpatterns=[
     path('edite/' ,views.edite , name='edite' ),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
     
-    path('others/', views.others, name='others'),
-    path('<int:id>', views.other, name='other'),
+    path('others/', views.others),
+    path('/<int:id>/', views.other, name='other'),
     path('search/', views.search, name='search'),
 ]+static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)
 
