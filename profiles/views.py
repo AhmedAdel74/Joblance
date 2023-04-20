@@ -78,7 +78,7 @@ def edite(request):
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'profiles/change_password.html'
     success_message = "Successfully Changed Your Password"
-    success_url = reverse_lazy('edite')
+    success_url = reverse_lazy('profiles:profile')
 
 
 
