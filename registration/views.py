@@ -30,8 +30,8 @@ def SignupPage(request):
             messages.error(request, "Password is required.")
         elif email=="":
             messages.error(request, "email is required.")
-        elif User.objects.filter(username=uname).exists()==True:
-            messages.info(request, f"We regret to inform you that the selected username or email, {uname} , is already registered in our system. We kindly request that you choose a different username and email address.")
+        elif User.objects.filter(username=uname).exists()==True or User.objects.filter(email=email).exists()==True:
+            messages.info(request, f"We regret to inform you that the selected username {uname} or email {email} is already registered in our system. We kindly request that you choose a different username and email address.")
         else:
             messages.error(request, f'Please correct the errors below.  {form.error_messages}')
     else:
@@ -46,6 +46,7 @@ def LoginPage(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['pass']
+        
 
         # loop through all User objects in the Login module
         user=authenticate(request,username=username,password=password)
@@ -60,6 +61,10 @@ def LoginPage(request):
             return render(request, 'registration\login.html')
     else:
         return render(request, 'registration\login.html')
+    
+def LogoutPage(request):
+    logout(request)
+    return redirect('pages:home')
 
 def checkExistUser(request):
     username = request.POST['username']

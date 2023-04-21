@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from django.urls import reverse
 from .models import Info
 from django.core.mail import send_mail
 from django.conf import settings
+from django.shortcuts import redirect
+from django.contrib.auth import logout
 from job.models import Job
-from django.contrib.auth import authenticate,login,logout
-from django.shortcuts import render,HttpResponse,redirect
 
 # Create your views here.
 
@@ -39,8 +38,3 @@ def send_message(request):
     
     return render(request, 'pages/feedback.html', {'myinfo':myinfo})
 
-def LogoutPage(request):
-    logout(request)
-    home_url = reverse('pages:home')
-    print(home_url)  # Add this line to print the URL
-    return redirect(home_url)

@@ -70,17 +70,14 @@ def edite(request):
             'profileform':profileform })
 
 
-
-
-
-
-
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'profiles/change_password.html'
     success_message = "Successfully Changed Your Password"
-    success_url = reverse_lazy('edite')
+    success_url = reverse_lazy('password_change_done')
+    # New Password Admin1990
 
-
+    # spider admin5555
+    # spider (newpassword) admin7777
 
 
 

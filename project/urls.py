@@ -26,7 +26,13 @@ urlpatterns = [
     path('profile/', include('profiles.urls', namespace = 'profiles')),
     path('registration/', include('registration.urls', namespace = 'registration')),
     path('features/', include('features.urls', namespace = 'features')),
-    
+    ### هنا انا استخدمت كل ال methods الداخلية فى ال django
+    ### الجاهزة اللى موجودة فى ال registration
+    ### اللى هى كتبناها فى فايل txt
+
+    path("accounts/", include("django.contrib.auth.urls") ),
+    ### عشان اوصل لمكان ال template
+    ### واعرف اساميهم امشى على نفس المسار اللى مكتوب 
 ] 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

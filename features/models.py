@@ -16,7 +16,7 @@ class Craftsmen(models.Model):
     image =models.ImageField(default='user.png', upload_to=image_upload )
     name=models.CharField(max_length=30 ,default='none')
     slug=models.SlugField(null=True ,blank=True)
-    phone_number=models.IntegerField(max_length=15 ,default='none')
+    phone_number=models.IntegerField(default='none')
     profession=models.CharField(max_length=30 ,default='none')
     address=models.CharField(max_length=50 ,default='none') 
     working_hours=models.CharField(max_length=50 ,default='none')
