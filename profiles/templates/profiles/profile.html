@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
     <!--main Templete-3 Css File-->
     <link rel="stylesheet" href="{% static 'css/morsy.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <!-- Font Awesome -->
    <link rel="stylesheet" href="{% static 'css/morsy.min.css' %}">
     <!--Google Fonts-->
@@ -53,7 +55,7 @@
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'profiles:edite' %}"><i class="far fa-chart-bar fa-fw"></i>Edit you profile</a>
+                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My Profile</a>
                             </li>
                             <li>
                                 <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
@@ -66,9 +68,11 @@
             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                 <div class="Appointment">
                     
+                    {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
-                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}"></a>
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -247,7 +251,7 @@
                     <a href="#others profile from ahmed sharaf">Hire Now</a>
                 </li>
                 <li>
-                    <a href="#craftspage from mohamed">Craftsmen</a>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
                 </li>
                 <li>
                     <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>

@@ -80,7 +80,7 @@
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'profiles:edite' %}"><i class="far fa-chart-bar fa-fw"></i>Edit you profile</a>
+                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My Profile</a>
                             </li>
                             <li>
                                 <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
@@ -97,6 +97,9 @@
                     {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
                         <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
@@ -186,7 +189,7 @@
                     <a href="#others profile from ahmed sharaf">Hire Now</a>
                 </li>
                 <li>
-                    <a href="#craftspage from mohamed">Craftsmen</a>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
                 </li>
                 <li>
                     <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>

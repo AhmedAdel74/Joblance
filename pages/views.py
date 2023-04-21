@@ -5,7 +5,7 @@ from django.conf import settings
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from job.models import Job
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -21,6 +21,7 @@ def index(request):
 def home(request):
     return render(request, 'pages/home.html')
 
+@login_required()
 def send_message(request):
     myinfo = Info.objects.first()
     if request.method == 'POST':

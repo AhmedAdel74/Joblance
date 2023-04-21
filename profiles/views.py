@@ -8,21 +8,21 @@ from .models import Profile
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
 
 # Create your views here.
 
-
+@login_required()
 def profile(request):
     profile = Profile.objects.get(user=request.user)
     return render( request ,  'profiles/profile.html' ,{'profile':profile})
 
 
 
-
+@login_required()
 def edite(request):
     try:
         profile = Profile.objects.get(user=request.user)
@@ -68,7 +68,6 @@ def edite(request):
                   {
             'userform':userform ,
             'profileform':profileform })
-
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'profiles/change_password.html'
