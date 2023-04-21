@@ -88,39 +88,39 @@
     </Header>
     <div class="container0">
         {%for x in users %}
-        <div class="box0">
-            <map name="AllArea"><area shape="rect" coords="1000,1000,1000,1000"></map>
-            <img src="{{ x.image.url }}" usemap="#AllArea" class="rounded-circle" href="{% url 'profiles:other' x.id %}">
-            
-            <a href="{% url 'profiles:other' x.id %}"><h2>{{x.user}}</h2></a>
-            
-            <p>{{x.tecskill}}</p>
-            <div class="options">
-                <a href="https://www.facebook.com/messages/t/100084004640131">Message</a>
-            </div>
-        </div>
+            {% if x.id != request.user.id %}
+                <div class="box0">
+                    <map name="AllArea"><area shape="rect" coords="1000,1000,1000,1000"></map>
+                    <img src="{{ x.image.url }}" usemap="#AllArea" class="rounded-circle" href="{% url 'profiles:other' x.id %}">
+                    <a href="{% url 'profiles:other' x.id %}"><h2>{{x.user}}</h2></a>
+                    <p>{{x.tecskill}}</p>
+                    <div class="options">
+                        <a href="https://www.facebook.com/messages/t/100084004640131">Message</a>
+                    </div>
+                </div>
+            {%endif%}
         {%endfor%}
-    </div>
-    {% if users.has_other_pages %}
-    <div class="pagination1">
-        {% if users.has_previous %}
-        <a href="?page={{ users.previous_page_number }}">previous</a>
-        {% endif %}
-
-        {% for page in users.paginator.page_range %}
-            {% if page == users.number %}
-                <span class="page-number current-page">{{ page }}</span>
-            {% elif page > users.number|add:'-3' and page < users.number|add:'3' %}
-                <a href="?page={{ page }}">{{ page }}</a>
+        </div>
+        {% if users.has_other_pages %}
+        <div class="pagination1">
+            {% if users.has_previous %}
+            <a href="?page={{ users.previous_page_number }}">previous</a>
             {% endif %}
-        {% endfor %}
 
-        {% if users.has_next %}
-            <a href="?page={{ users.next_page_number }}">next</a>
-        {% endif %}
-    </div>
+            {% for page in users.paginator.page_range %}
+                {% if page == users.number %}
+                    <span class="page-number current-page">{{ page }}</span>
+                {% elif page > users.number|add:'-3' and page < users.number|add:'3' %}
+                    <a href="?page={{ page }}">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if users.has_next %}
+                <a href="?page={{ users.next_page_number }}">next</a>
+            {% endif %}
+        </div>
        
-    {% endif %}
+        {% endif %}
 
 <section style="margin-top: 250px;">
     <footer>
