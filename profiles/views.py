@@ -89,7 +89,7 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
         #Sharaf Section
 def others(request):
     others      = Profile.objects.all()
-    paginator   = Paginator(others,2)
+    paginator   = Paginator(others,12)
     page_number = request.GET.get('page')
     page_obj    = paginator.get_page(page_number)
     context     = {'users' : page_obj }
