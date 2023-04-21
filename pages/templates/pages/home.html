@@ -40,11 +40,11 @@
     </head>
 <body>
     <Header>
-
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
                 <h2 style="color: #fff;">Joblance</h2>  
             </a>
+            
             <ul class="links"> 
                 <li><a href="{% url 'pages:home' %}">Home</a></li>
                 <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
@@ -62,7 +62,7 @@
                              </li>
                              
                              <li>
-                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                                <a href="#services"><i class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
                              
                             
@@ -88,14 +88,13 @@
                         <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a class="boxed-btn3" href="{% url 'pages:logout' %}" class="btn btn-primary" >Logout</a>
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
                         <a class="boxed-btn3" href="{% url 'registration:signin' %}" style="float: right;">Login</a>
                     </div>
                     {% endif %}
-
                 </div>
             </div>
         </div>
@@ -215,7 +214,7 @@
                         <a href="#others profile from ahmed sharaf">Hire Now</a>
                     </li>
                     <li>
-                        <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                        <a href="#craftspage from mohamed">Craftsmen</a>
                     </li>
                     <li>
                         <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>

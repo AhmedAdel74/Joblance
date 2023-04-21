@@ -54,8 +54,8 @@ button:hover {
 .container{
     
     box-sizing: border-box;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     border: 2px solid black;
     box-shadow: -3px -3px 7px black 
                  3px 3px 5px rgba(49,104,121,0.288);
