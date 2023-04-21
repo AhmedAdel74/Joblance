@@ -157,7 +157,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    /*add*//*flex-wrap: wrap;*/
     position: relative;
 }
 
@@ -173,6 +173,8 @@ header .links {
 }
 
 header .logo {
+    /*add*/
+    margin: 0px 25px 0px -120px;
     color: var(--main-color);
     font-size: 26px;
     font-weight: bold;
@@ -189,6 +191,8 @@ header .logo {
     }
 }
 header .links > li > a {
+    /*add*/
+    width: max-content;
     position: relative;
     color: black;
     font-size: 18px;

@@ -24,6 +24,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
     <title>Profile</title>
 </head>
 
@@ -67,6 +68,11 @@
                     <!-- End Megamenu -->
                 </li>
             </ul>
+            <form>     
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                <input type="Search" name="q" placeholder="What are you looking for?">
+                <input type="submit" value="Search">
+            </form>
             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                 <div class="Appointment">
                     
@@ -130,7 +136,7 @@
            font-size: 1rem;
            border-radius: 5px;
            border: 1px solid black;
-           height: 230px;
+           height: 250px;
            text-align: left;
            display: block">
            <h3>CV</h3>
@@ -150,7 +156,7 @@
            font-size: 1rem;
            border-radius: 5px;
            border: 1px solid black;
-           height: 450px;
+           height: 500px;
            text-align: left;
            display: block">
             <h4>Education</h4>
