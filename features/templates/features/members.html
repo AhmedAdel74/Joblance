@@ -7,7 +7,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JobLance</title>
-    <link rel="icon" href="../Main/img/png-file-svg-white-headphone-png-icon-3090554-pngtube-headphones-icon-png-920_916.jpg" />
+    <link rel="icon"
+        href="../Main/img/png-file-svg-white-headphone-png-icon-3090554-pngtube-headphones-icon-png-920_916.jpg" />
 
     <!--google font link-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
@@ -38,13 +39,14 @@
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <Header>
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
-                <h2 style="color: #fff;">Joblance</h2>  
+                <h2 style="color: #fff;">Joblance</h2>
             </a>
-            <ul class="links"> 
+            <ul class="links">
                 <li><a href="{% url 'pages:home' %}">Home</a></li>
                 <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
                 <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
@@ -58,21 +60,24 @@
                         <ul class="links_one">
                             <li>
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
-                             </li>
-                             
-                             <li>
-                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
-                             
-                            
+
+                            <li>
+                                <a href="{% url 'features:craftsmen' %}"><i
+                                        class="far fa-building fa-fw"></i>Craftsmen</a>
+                            </li>
+
+
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My Profile</a>
+                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My
+                                    Profile</a>
                             </li>
                             <li>
-                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
-                             </li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send
+                                    feedback</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
@@ -85,7 +90,7 @@
                         <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
@@ -95,10 +100,10 @@
                 </div>
             </div>
         </div>
-        
+
     </Header>
 
- 
+
 
 
 
@@ -112,27 +117,27 @@
         </div>
         <div class="container">
             <div class="box">
-              <div class="data">
-                <img src="{% static 'img/images/team-01.jpg' %}" alt="">
-                <div class="social">
-                    <a href="#">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                <div class="data">
+                    <img src="{% static 'img/images/team-01.jpg' %}" alt="">
+                    <div class="social">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
                 </div>
-              </div>
-              <div class="info">
-                <h3>Ahmed Adel</h3>
-                <p>Team leader</p>
-              </div>
+                <div class="info">
+                    <h3>Ahmed Adel</h3>
+                    <p>Team leader</p>
+                </div>
             </div>
             <div class="box">
                 <div class="data">
@@ -250,11 +255,11 @@
                     <p>Simple Short Description</p>
                 </div>
             </div>
-            
-                
-               
-            </div>
+
+
+
         </div>
+    </div>
     </div>
     <div class="spikes"></div>
     <!--End Team Member-->
@@ -265,28 +270,29 @@
     <footer>
         <div class="container">
             <div class="box">
-               <h3 style="color: #fff;">Joblance</h3>
-               <br>
-               <ul class="social">
-                <li>
-                    <a href="#" class="facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="youtube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </li>
-               </ul>
-               <br>
+                <h3 style="color: #fff;">Joblance</h3>
+                <br>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <br>
                 <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste
+                    aspernatur
                 </p>
             </div>
             <div class="box">
@@ -312,15 +318,15 @@
                 <div class="line">
                     <i class="fas fa-map-marker-alt fa-fw"></i>
                     <div class="info">
-                    Cairo, Egypt
+                        Cairo, Egypt
                     </div>
                 </div>
                 <div class="line">
-                        <i class="far fa-clock fa-fw"></i>
-                        <div class="info">
-                            Working Hours: 08:00-04:00
-                        </div>
-                    
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">
+                        Working Hours: 08:00-04:00
+                    </div>
+
                 </div>
                 <div class="line">
                     <i class="fas fa-phone-volume fa-fw"></i>
@@ -330,16 +336,17 @@
                     </div>
                 </div>
             </div>
-    
+
         </div>
         <p class="copyright">Made With &lt;3 By Joblance</p>
-        
+
     </footer>
     <!--End Footer-->
 
-   
+
 
 
 
 </body>
+
 </html>

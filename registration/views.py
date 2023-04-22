@@ -64,7 +64,7 @@ def LoginPage(request):
     
 def LogoutPage(request):
     logout(request)
-    return redirect('pages:home')
+    return redirect('pages:index')
 
 def checkExistUser(request):
     username = request.POST['username']

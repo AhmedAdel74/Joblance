@@ -7,8 +7,9 @@ app_name = 'job'
 urlpatterns = [
     path('', views.jobs_list, name='job_list'),
     path('add', views.add_job, name='add_job'),
+    path('<int:id>', views.edit_job, name='edit_job'),
+    path('job/<int:pk>/delete/', views.JobDeleteView, name='job_delete'),
     path('<str:slug>', views.job_details, name='job_details'),
-    
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

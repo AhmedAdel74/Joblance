@@ -3,12 +3,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-       Joblance
+        Joblance
     </title>
     <!--Render All Elements Normally-->
     <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
@@ -23,15 +24,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
-   
+
 </head>
+
 <body>
     <Header>
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
-                <h2 style="color: #fff;">Joblance</h2>  
+                <h2 style="color: #fff;">Joblance</h2>
             </a>
-            <ul class="links"> 
+            <ul class="links">
                 <li><a href="{% url 'pages:home' %}">Home</a></li>
                 <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
                 <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
@@ -45,32 +47,35 @@
                         <ul class="links_one">
                             <li>
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
-                             </li>
-                             
-                             <li>
-                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
-                             
-                            
+
+                            <li>
+                                <a href="{% url 'features:craftsmen' %}"><i
+                                        class="far fa-building fa-fw"></i>Craftsmen</a>
+                            </li>
+
+
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My Profile</a>
+                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My
+                                    Profile</a>
                             </li>
                             <li>
-                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
-                             </li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send
+                                    feedback</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
                 </li>
-                
+
             </ul>
             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                 <div class="Appointment">
                     {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
@@ -80,7 +85,7 @@
                 </div>
             </div>
         </div>
-        
+
     </Header>
 
 
@@ -104,11 +109,11 @@
 
     <!--Start Articles-->
     <div class="articles" id="articles">
-      <div class="title">
-        Craftsmen
-      </div>
+        <div class="title">
+            Craftsmen
+        </div>
         <div class="container">
-            
+
 
             {% for worker in list %}
             <div class="box">
@@ -117,21 +122,21 @@
                     <h2>{{worker.name}}</h2>
                     <p>{{worker.profession}}</p>
                 </div>
-            
+
                 <div class="info">
                     <div class="box">
                         <div class="line">
                             <i class="fas fa-map-marker-alt fa-fw"></i>
                             <div class="info">
-                            {{worker.address}}
+                                {{worker.address}}
                             </div>
                         </div>
                         <div class="line">
-                                <i class="far fa-clock fa-fw"></i>
-                                <div class="info">
-                                    {{worker.working_hours}}
-                                </div>
-                            
+                            <i class="far fa-clock fa-fw"></i>
+                            <div class="info">
+                                {{worker.working_hours}}
+                            </div>
+
                         </div>
                         <div class="line">
                             <i class="fas fa-phone-volume fa-fw"></i>
@@ -141,53 +146,53 @@
                         </div>
                     </div>
                 </div>
-              
+
             </div>
             {% endfor %}
 
 
-    </div>
+        </div>
     </div>
 
     <div class="spikes"></div>
     <!--End Articles-->
 
-    
+
     <!--Start Gallery-->
     <div class="gallery" id="gallery">
         <div class="title">
-           Gallery
+            Gallery
         </div>
         <div class="container">
             <div class="box">
-             <div class="image"> 
-                <img src="{% static 'img/images/Pottery3.jpg' %}" alt="">
-             </div>
+                <div class="image">
+                    <img src="{% static 'img/images/Pottery3.jpg' %}" alt="">
+                </div>
             </div>
             <div class="box">
-              <div class="image">
-                <img src="{% static 'img/images/Tarabish1.jpeg' %}" alt="">
-              </div>
+                <div class="image">
+                    <img src="{% static 'img/images/Tarabish1.jpeg' %}" alt="">
+                </div>
             </div>
             <div class="box">
-              <div class="image">
-                <img src="{% static 'img/images/Pottery1.jpg' %}" alt="">
-              </div>
+                <div class="image">
+                    <img src="{% static 'img/images/Pottery1.jpg' %}" alt="">
+                </div>
             </div>
             <div class="box">
-              <div class="image">
-                <img src="{% static 'img/images/_EGYPT-CULTURE-FEZ.webp' %}" alt="">
-              </div>  
+                <div class="image">
+                    <img src="{% static 'img/images/_EGYPT-CULTURE-FEZ.webp' %}" alt="">
+                </div>
             </div>
             <div class="box">
-              <div class="image">  
-                <img src="{% static 'img/images/Tarabish3.jpg' %}" alt="">
-              </div>  
+                <div class="image">
+                    <img src="{% static 'img/images/Tarabish3.jpg' %}" alt="">
+                </div>
             </div>
             <div class="box">
-              <div class="image"> 
-                <img src="{% static 'img/images/Tarabish2.jpg' %}" alt="">
-              </div>  
+                <div class="image">
+                    <img src="{% static 'img/images/Tarabish2.jpg' %}" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -196,18 +201,18 @@
 
     <div class="spikes"></div>
 
-    
+
     <!-- Start Testimonials-->
-    
-     <div class="testimonials" id="testimonials">
+
+    <div class="testimonials" id="testimonials">
         <div class="title">
             Testimonials
         </div>
         <div class="container">
             <div class="box">
-                
+
                 <img src="{% static 'img/images/WickerMaker.jpg' %}" alt="">
-                
+
                 <h2>Elhossiny</h2>
                 <span class="job">Wicker Maker</span>
                 <div class="rate">
@@ -216,17 +221,18 @@
                     <i class="filled fa-regular fa-star"></i>
                     <i class="filled fa-regular fa-star"></i>
                     <i class=" fa-regular fa-star"></i>
-                
+
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
-                ducimus</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus quaerat
+                    ducimus</p>
 
 
             </div>
             <div class="box">
-               
-                 <img src="{% static 'img/images/BashoutMaker.jpg' %}" alt="">
-                
+
+                <img src="{% static 'img/images/BashoutMaker.jpg' %}" alt="">
+
                 <h2>Mohamed Ibrahim</h2>
                 <span class="job">
                     Bashout Maker
@@ -237,17 +243,18 @@
                     <i class="filled fa-regular fa-star"></i>
                     <i class="filled fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
-                
+
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
-                ducimus</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus quaerat
+                    ducimus</p>
 
 
             </div>
             <div class="box">
-               
+
                 <img src="{% static 'img/images/123.webp' %}" alt="">
-                
+
                 <h2>Shady Nabil</h2>
                 <span class="job">Pottery Maker</span>
                 <div class="rate">
@@ -256,16 +263,17 @@
                     <i class="filled fa-regular fa-star"></i>
                     <i class="filled fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
-                
+
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
-                ducimus</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus quaerat
+                    ducimus</p>
 
             </div>
             <div class="box">
-                
+
                 <img src="{% static 'img/images/PotteryMaker2.jpg' %}" alt="">
-                
+
                 <h2>Awlad Khalil</h2>
                 <span class="job">Pottery Maker</span>
                 <div class="rate">
@@ -274,16 +282,17 @@
                     <i class="filled  fa-regular fa-star"></i>
                     <i class="filled  fa-regular fa-star"></i>
                     <i class="filled  fa-regular fa-star"></i>
-                
+
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
-                ducimus</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus quaerat
+                    ducimus</p>
 
             </div>
             <div class="box">
-                
+
                 <img src="{% static 'img/images/CarpentryMaker.jpg' %}" alt="">
-                
+
                 <h2>Ragab</h2>
                 <span class="job">Carpentry Maker</span>
                 <div class="rate">
@@ -292,15 +301,16 @@
                     <i class="filled fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
-                
+
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
-                ducimus</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus quaerat
+                    ducimus</p>
             </div>
             <div class="box">
-               
+
                 <img src="{% static 'img/images/MourningMaker.jpg' %}" alt="">
-               
+
                 <h2>Hamada</h2>
                 <span class="job">Mourning Maker</span>
                 <div class="rate">
@@ -309,16 +319,17 @@
                     <i class="filled fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
                     <i class="fa-regular fa-star"></i>
-                
+
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est natus quaerat
-                ducimus</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
+                    natus quaerat
+                    ducimus</p>
 
             </div>
 
         </div>
 
-     </div>
+    </div>
     <!--End Testimonials-->
 
     <div class="spikes"></div>
@@ -327,28 +338,29 @@
     <footer>
         <div class="container">
             <div class="box">
-               <h3 style="color: #fff;">Joblance</h3>
-               <br>
-               <ul class="social">
-                <li>
-                    <a href="#" class="facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="youtube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </li>
-               </ul>
-               <br>
+                <h3 style="color: #fff;">Joblance</h3>
+                <br>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <br>
                 <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste
+                    aspernatur
                 </p>
             </div>
             <div class="box">
@@ -374,15 +386,15 @@
                 <div class="line">
                     <i class="fas fa-map-marker-alt fa-fw"></i>
                     <div class="info">
-                    Cairo, Egypt
+                        Cairo, Egypt
                     </div>
                 </div>
                 <div class="line">
-                        <i class="far fa-clock fa-fw"></i>
-                        <div class="info">
-                            Working Hours: 08:00-04:00
-                        </div>
-                    
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">
+                        Working Hours: 08:00-04:00
+                    </div>
+
                 </div>
                 <div class="line">
                     <i class="fas fa-phone-volume fa-fw"></i>
@@ -392,16 +404,17 @@
                     </div>
                 </div>
             </div>
-    
+
         </div>
         <p class="copyright">Made With &lt;3 By Joblance</p>
-        
+
     </footer>
     <!--End Footer-->
 
-   
+
 
 
 
 </body>
+
 </html>

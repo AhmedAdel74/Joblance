@@ -54,9 +54,9 @@
     <Header>
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
-                <h2 style="color: #fff;">Joblance</h2>  
+                <h2 style="color: #fff;">Joblance</h2>
             </a>
-            <ul class="links"> 
+            <ul class="links">
                 <li><a href="{% url 'pages:home' %}">Home</a></li>
                 <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
                 <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
@@ -70,36 +70,38 @@
                         <ul class="links_one">
                             <li>
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
-                             </li>
-                             
-                             <li>
+                            </li>
+
+                            <li>
                                 <a href="#services"><i class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
-                             
-                            
+
+
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My Profile</a>
+                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My
+                                    Profile</a>
                             </li>
                             <li>
-                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
-                             </li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send
+                                    feedback</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
                 </li>
-                
+
             </ul>
             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                 <div class="Appointment">
-                    
+
                     {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
                         <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
@@ -109,149 +111,146 @@
                 </div>
             </div>
         </div>
-        
+
     </Header>
     <!-- header-end -->
-<main>
-    <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>{{job.title}}</h3>
+    <main>
+        <!-- bradcam_area  -->
+        <div class="bradcam_area bradcam_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text">
+                            <h3>{{job.title}}</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--/ bradcam_area  -->
+        <!--/ bradcam_area  -->
 
-    <div class="job_details_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="job_details_header">
-                        <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
-                                
-                                <div class="jobs_conetent">
-                                    <a href="#"><h4>{{job.title}}</h4></a>
-                                    <div class="links_locat d-flex align-items-center">
-                                        <div class="location">
-                                            <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}}, {{job.country}}</p>
-                                        </div>
-                                        <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
+        <div class="job_details_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="job_details_header">
+                            <div class="single_jobs white-bg d-flex justify-content-between">
+                                <div class="jobs_left d-flex align-items-center">
+
+                                    <div class="jobs_conetent">
+                                        <a href="#">
+                                            <h4>{{job.title}}</h4>
+                                        </a>
+                                        <div class="links_locat d-flex align-items-center">
+                                            <div class="location">
+                                                <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}},
+                                                    {{job.country}}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            
                         </div>
-                    </div>
-                    <div class="descript_wrap white-bg">
-                        <div class="single_wrap">
-                            <p>{{job.description}}</p>
+                        <div class="descript_wrap white-bg">
+                            <div class="single_wrap">
+                                <p>{{job.description}}</p>
                             </div>
-                    </div>
-                    <div class="apply_job_form white-bg">
-                        <h4>Apply for the job</h4>
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {% bootstrap_form apply_form %}
-                            {% buttons %}
+                        </div>
+                        <div class="apply_job_form white-bg">
+                            <h4>Apply for the job</h4>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% bootstrap_form apply_form %}
+                                {% buttons %}
                                 <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
-                            {% endbuttons %}
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="job_sumary">
-                        <div class="summery_header">
-                            <h3>Job Summery</h3>
-                        </div>
-                        <div class="job_content">
-                            <ul>
-                                <li>Published on: <span>{{job.published_at|date:'d M o'}}</span></li>
-                                <li>Vacancy: <span>{{job.vacancy}}</span></li>
-                                <li>Salary: <span>{{job.salary}} K/m</span></li>
-                                <li>Location: <span>{{job.city}}, {{job.country}}</span></li>
-                                <li>Job Nature: <span> {{job.job_type}}</span></li>
-                            </ul>
+                                {% endbuttons %}
+                            </form>
                         </div>
                     </div>
-                    <div class="share_wrap d-flex">
-                        <span>Share at:</span>
-                        <ul>
-                            <li><a href="#"> <i class="fa fa-facebook"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-google-plus"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-twitter"></i></a> </li>
-                            <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
-                        </ul>
-                    </div>
-                    <div class="job_location_wrap">
-                        <div class="job_lok_inner">
-                            <div id="map" style="height: 200px;"></div>
-                            <script>
-                              function initMap() {
-                                var uluru = {lat: -25.363, lng: 131.044};
-                                var grayStyles = [
-                                  {
-                                    featureType: "all",
-                                    stylers: [
-                                      { saturation: -90 },
-                                      { lightness: 50 }
-                                    ]
-                                  },
-                                  {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
-                                ];
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                  center: {lat: -31.197, lng: 150.744},
-                                  zoom: 9,
-                                  styles: grayStyles,
-                                  scrollwheel:  false
-                                });
-                              }
-                              
-                            </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
-                            
-                          </div>
+                    <div class="col-lg-4">
+                        <div class="job_sumary">
+                            <div class="summery_header">
+                                <h3>Job Summery</h3>
+                            </div>
+                            <div class="job_content">
+                                <ul>
+                                    <li>Published on: <span>{{job.published_at|date:'d M o'}}</span></li>
+                                    <li>Vacancy: <span>{{job.vacancy}}</span></li>
+                                    <li>Salary: <span>{{job.salary}}$</span></li>
+                                    <li>Location: <span>{{job.city}}, {{job.country}}</span></li>
+                                    <li>Job Nature: <span> {{job.job_type}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="job_location_wrap">
+                            <div class="job_lok_inner">
+                                <div id="map" style="height: 200px;"></div>
+                                <script>
+                                    function initMap() {
+                                        var uluru = { lat: -25.363, lng: 131.044 };
+                                        var grayStyles = [
+                                            {
+                                                featureType: "all",
+                                                stylers: [
+                                                    { saturation: -90 },
+                                                    { lightness: 50 }
+                                                ]
+                                            },
+                                            { elementType: 'labels.text.fill', stylers: [{ color: '#ccdee9' }] }
+                                        ];
+                                        var map = new google.maps.Map(document.getElementById('map'), {
+                                            center: { lat: -31.197, lng: 150.744 },
+                                            zoom: 9,
+                                            styles: grayStyles,
+                                            scrollwheel: false
+                                        });
+                                    }
+
+                                </script>
+                                <script
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
 
     <!-- footer start -->
     <footer>
         <div class="container">
             <div class="box">
-               <h3 style="color: #fff;">Joblance</h3>
-               <br>
-               <ul class="social">
-                <li>
-                    <a href="#" class="facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="youtube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </li>
-               </ul>
-               <br>
+                <h3 style="color: #fff;">Joblance</h3>
+                <br>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <br>
                 <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste
+                    aspernatur
                 </p>
             </div>
             <div class="box">
@@ -277,15 +276,15 @@
                 <div class="line">
                     <i class="fas fa-map-marker-alt fa-fw"></i>
                     <div class="info">
-                    Cairo, Egypt
+                        Cairo, Egypt
                     </div>
                 </div>
                 <div class="line">
-                        <i class="far fa-clock fa-fw"></i>
-                        <div class="info">
-                            Working Hours: 08:00-04:00
-                        </div>
-                    
+                    <i class="far fa-clock fa-fw"></i>
+                    <div class="info">
+                        Working Hours: 08:00-04:00
+                    </div>
+
                 </div>
                 <div class="line">
                     <i class="fas fa-phone-volume fa-fw"></i>
@@ -295,13 +294,13 @@
                     </div>
                 </div>
             </div>
-    
+
         </div>
         <p class="copyright">Made With &lt;3 By Joblance</p>
-        
+
     </footer>
     <!--/ footer end  -->
-    
+
     <!-- link that opens popup -->
     <!-- JS here -->
     <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
@@ -323,41 +322,35 @@
     <script src="{% static 'js/plugins.js' %}"></script>
     <!-- <script src="js/gijgo.min.js"></script> -->
     <script src="{% static 'js/range.js' %}"></script>
-    
-    
-    
+
+
+
     <!--contact js-->
     <script src="{% static 'js/contact.js' %}"></script>
     <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
     <script src="{% static 'js/jquery.form.js' %}"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'js/mail-script.js' %}"></script>
-    
-    
+
+
     <script src="{% static 'js/main.js' %}"></script>
-    
-    
+
+
     <script>
-        $( function() {
-            $( "#slider-range" ).slider({
+        $(function () {
+            $("#slider-range").slider({
                 range: true,
                 min: 0,
                 max: 24600,
-                values: [ 750, 24600 ],
-                slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] +"/ Year" );
+                values: [750, 24600],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1] + "/ Year");
                 }
             });
-            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-                " - $" + $( "#slider-range" ).slider( "values", 1 ) + "/ Year");
-        } );
-        </script>
-    </body>
-    
-    </html>
-    
-    
-    
-    
-    
-     
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1) + "/ Year");
+        });
+    </script>
+</body>
+
+</html>

@@ -54,9 +54,9 @@
     <Header>
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
-                <h2 style="color: #fff;">Joblance</h2>  
+                <h2 style="color: #fff;">Joblance</h2>
             </a>
-            <ul class="links" > 
+            <ul class="links">
                 <li><a href="{% url 'pages:home' %}">Home</a></li>
                 <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
                 <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
@@ -70,38 +70,40 @@
                         <ul class="links_one">
                             <li>
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
-                             </li>
-                             
-                             <li>
+                            </li>
+
+                            <li>
                                 <a href="#services"><i class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
-                             
-                            
+
+
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My Profile</a>
+                                <a href="{% url 'profiles:profile' %}"><i class="far fa-chart-bar fa-fw"></i>My
+                                    Profile</a>
                             </li>
                             <li>
-                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send feedback</a>
-                             </li>
+                                <a href="{% url 'pages:feedback' %}"><i class="far fa-check-circle fa-fw"></i>Send
+                                    feedback</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
                 </li>
-                
+
             </ul>
-            
+
 
             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                 <div class="Appointment">
-                    
+
                     {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
                         <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3" >Logout</a>
+                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
@@ -113,47 +115,47 @@
 
 
         </div>
-        
+
     </Header>
     <!-- header-end -->
-<main>
-    <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>{{forcount.count}}+ Jobs Available</h3>
+    <main>
+        <!-- bradcam_area  -->
+        <div class="bradcam_area bradcam_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text">
+                            <h3>{{forcount.count}}+ Jobs Available</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--/ bradcam_area  -->
+        <!--/ bradcam_area  -->
 
-    <!-- job_listing_area_start  -->
-    <div class="job_listing_area plus_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="job_filter white-bg">
-                        <div class="form_inner white-bg">
-                            <h3>Filter</h3>
-                            <form method="GET">
-                                {% bootstrap_form myfilter.form %}
-                                <input type="submit" value="Search" class="boxed-btn3 w-100 mt-4">
-                            </form>
+        <!-- job_listing_area_start  -->
+        <div class="job_listing_area plus_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="job_filter white-bg">
+                            <div class="form_inner white-bg">
+                                <h3>Filter</h3>
+                                <form method="GET">
+                                    {% bootstrap_form myfilter.form %}
+                                    <input type="submit" value="Search" class="boxed-btn3 w-100 mt-4">
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="recent_joblist_wrap">
-                        <div class="recent_joblist white-bg ">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <h4>Job Listing</h4>
-                                </div>
-                               <!-- <div class="col-md-6">
+                    <div class="col-lg-9">
+                        <div class="recent_joblist_wrap">
+                            <div class="recent_joblist white-bg ">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <h4>Job Listing</h4>
+                                    </div>
+                                    <!-- <div class="col-md-6">
                                     <div class="serch_cat d-flex justify-content-end">
                                         <select>
                                             <option data-display="Most Recent">Most Recent</option>
@@ -163,208 +165,247 @@
                                         </select>
                                     </div>
                                 </div> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="job_lists m-0">
-                        <div class="row">
-                            {% for job in jobs %}
-                            <div class="col-lg-12 col-md-12">
-                                <div class="single_jobs white-bg d-flex justify-content-between">
-                                    <div class="jobs_left d-flex align-items-center">
-                                        
-                                        <div class="jobs_conetent">
-                                            <a href="{% url 'jobs:job_details' job.slug %}"><h4>{{job.title}}</h4></a>
-                                            <div class="links_locat d-flex align-items-center">
-                                                <div class="location">
-                                                    
-                                                    <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}}, {{job.country}}</p>
-                                                </div>
-                                                <div class="location">
-                                                    <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
+                        <div class="job_lists m-0">
+                            <div class="row">
+                                {% for job in jobs %}
+
+                                {% if job.owner == user %}
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single_jobs white-bg d-flex justify-content-between">
+                                        <div class="jobs_left d-flex align-items-center">
+
+                                            <div class="jobs_conetent">
+                                                <a href="{% url 'jobs:edit_job' job.id %}">
+                                                    <h4>{{job.title}}</h4>
+                                                </a>
+                                                <div class="links_locat d-flex align-items-center">
+                                                    <div class="location">
+                                                        <p> <i class="fa-solid fa-user"></i>You</p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}},
+                                                            {{job.country}}</p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="jobs_right">
-                                        <div class="apply_now">
-                                            <a href="{% url 'jobs:job_details' job.slug %}" class="boxed-btn3">Apply Now</a>
-                                        </div>
-                                        <div class="date">
-                                            <p>Published at: {{job.published_at|date:'d M o'}}</p>
+                                        <div class="jobs_right">
+                                            <div class="apply_now">
+                                                <a href="{% url 'jobs:edit_job' job.id %}" class="boxed-btn3">Edit your
+                                                    job</a>
+                                            </div>
+                                            <div class="date">
+                                                <p>Published at: {{job.published_at|date:'d M o'}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                {% else %}
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single_jobs white-bg d-flex justify-content-between">
+                                        <div class="jobs_left d-flex align-items-center">
+
+                                            <div class="jobs_conetent">
+                                                <a href="{% url 'jobs:job_details' job.slug %}">
+                                                    <h4>{{job.title}}</h4>
+                                                </a>
+                                                <div class="links_locat d-flex align-items-center">
+                                                    <div class="location">
+                                                        <p> <i class="fa-solid fa-user"></i> {{job.owner}}</p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}},
+                                                            {{job.country}}</p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jobs_right">
+                                            <div class="apply_now">
+                                                <a href="{% url 'jobs:job_details' job.slug %}" class="boxed-btn3">Apply
+                                                    Now</a>
+                                            </div>
+                                            <div class="date">
+                                                <p>Published at: {{job.published_at|date:'d M o'}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
-                            {% endfor %}
 
-                        </div>
-
-                        {% if jobs.has_other_pages %}
+                            {% if jobs.has_other_pages %}
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="pagination_wrap">
                                         <ul>
 
                                             {% if jobs.has_previous %}
-                                                <li><a href="?page={{jobs.previous_page_number}}"> <i class="ti-angle-left"></i> </a></li>
+                                            <li><a href="?page={{jobs.previous_page_number}}"> <i
+                                                        class="ti-angle-left"></i> </a></li>
                                             {% endif %}
 
                                             {% for i in jobs.paginator.page_range %}
-                                                <li><a href="?page={{i}}"><span>{{i}}</span></a></li>
+                                            <li><a href="?page={{i}}"><span>{{i}}</span></a></li>
                                             {% endfor %}
-                                           
+
                                             {% if jobs.has_next %}
-                                                <li><a href="?page={{jobs.next_page_number}}"> <i class="ti-angle-right"></i> </a></li>
+                                            <li><a href="?page={{jobs.next_page_number}}"> <i
+                                                        class="ti-angle-right"></i> </a></li>
                                             {% endif %}
 
-                                         </ul>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        {% endif %}
+                            {% endif %}
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
 
-<!-- footer start -->
-<footer>
-    <div class="container">
-        <div class="box">
-           <h3 style="color: #fff;">Joblance</h3>
-           <br>
-           <ul class="social">
-            <li>
-                <a href="#" class="facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="youtube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </li>
-           </ul>
-           <br>
-            <p class="text">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
-            </p>
-        </div>
-        <div class="box">
-            <ul class="links">
-                <li>
-                    <a href="{% url 'features:members' %}">Members</a>
-                </li>
-                <li>
-                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
-                </li>
-                <li>
-                    <a href="#others profile from ahmed sharaf">Hire Now</a>
-                </li>
-                <li>
-                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
-                </li>
-                <li>
-                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
-                </li>
-            </ul>
-        </div>
-        <div class="box">
-            <div class="line">
-                <i class="fas fa-map-marker-alt fa-fw"></i>
-                <div class="info">
-                Cairo, Egypt
-                </div>
+    <!-- footer start -->
+    <footer>
+        <div class="container">
+            <div class="box">
+                <h3 style="color: #fff;">Joblance</h3>
+                <br>
+                <ul class="social">
+                    <li>
+                        <a href="#" class="facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <br>
+                <p class="text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste
+                    aspernatur
+                </p>
             </div>
-            <div class="line">
+            <div class="box">
+                <ul class="links">
+                    <li>
+                        <a href="{% url 'features:members' %}">Members</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                    </li>
+                    <li>
+                        <a href="#others profile from ahmed sharaf">Hire Now</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <div class="line">
+                    <i class="fas fa-map-marker-alt fa-fw"></i>
+                    <div class="info">
+                        Cairo, Egypt
+                    </div>
+                </div>
+                <div class="line">
                     <i class="far fa-clock fa-fw"></i>
                     <div class="info">
                         Working Hours: 08:00-04:00
                     </div>
-                
-            </div>
-            <div class="line">
-                <i class="fas fa-phone-volume fa-fw"></i>
-                <div class="info">
-                    +201151261692
-                    +201095625946
+
+                </div>
+                <div class="line">
+                    <i class="fas fa-phone-volume fa-fw"></i>
+                    <div class="info">
+                        +201151261692
+                        +201095625946
+                    </div>
                 </div>
             </div>
+
         </div>
+        <p class="copyright">Made With &lt;3 By Joblance</p>
 
-    </div>
-    <p class="copyright">Made With &lt;3 By Joblance</p>
-    
-</footer>
-<!--/ footer end  -->
+    </footer>
+    <!--/ footer end  -->
 
-<!-- link that opens popup -->
-<!-- JS here -->
-<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
-<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'js/ajax-form.js' %}"></script>
-<script src="{% static 'js/waypoints.min.js' %}"></script>
-<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
-<script src="{% static 'js/scrollIt.js' %}"></script>
-<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
-<script src="{% static 'js/wow.min.js' %}"></script>
-<script src="{% static 'js/nice-select.min.js' %}"></script>
-<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
-<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'js/plugins.js' %}"></script>
-<!-- <script src="js/gijgo.min.js"></script> -->
-<script src="{% static 'js/range.js' %}"></script>
+    <!-- link that opens popup -->
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- <script src="js/gijgo.min.js"></script> -->
+    <script src="{% static 'js/range.js' %}"></script>
 
 
 
-<!--contact js-->
-<script src="{% static 'js/contact.js' %}"></script>
-<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
-<script src="{% static 'js/jquery.form.js' %}"></script>
-<script src="{% static 'js/jquery.validate.min.js' %}"></script>
-<script src="{% static 'js/mail-script.js' %}"></script>
+    <!--contact js-->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
 
 
-<script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 
 
-<script>
-    $( function() {
-        $( "#slider-range" ).slider({
-            range: true,
-            min: 0,
-            max: 24600,
-            values: [ 750, 24600 ],
-            slide: function( event, ui ) {
-                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] +"/ Year" );
-            }
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 24600,
+                values: [750, 24600],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1] + "/ Year");
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1) + "/ Year");
         });
-        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-            " - $" + $( "#slider-range" ).slider( "values", 1 ) + "/ Year");
-    } );
     </script>
 </body>
 
 </html>
-
-
-
-
-
- 
