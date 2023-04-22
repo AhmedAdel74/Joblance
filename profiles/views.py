@@ -86,6 +86,7 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
 
 
 
+
         #Sharaf Section
 def others(request):
     others      = Profile.objects.all()
