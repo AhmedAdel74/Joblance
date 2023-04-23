@@ -1,15 +1,12 @@
 from django.forms import SlugField
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Job
 from django.core.paginator import Paginator
 from .form import ApplyForm, JobForm
 from django.urls import reverse
 from .filters import JobFilter
 from django.contrib.auth.decorators import login_required
-from django.views.generic import DeleteView
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 # Create your views here.
 
 
@@ -69,7 +66,9 @@ def add_job(request):
 @login_required()
 def edit_job(request, id):
     job = Job.objects.get(id=id)
-
+    if job.owner != request.user:
+        # If the user is not the creator of the job, return a 403 error
+        return redirect('pages:home')
     if request.method == 'POST':
         form = JobForm(request.POST, instance=job)
         if form.is_valid():
@@ -81,16 +80,8 @@ def edit_job(request, id):
     return render(request, 'job\edit_job.html', context)
 
 @login_required()
-class JobDeleteView(LoginRequiredMixin, DeleteView):
-    model = Job
-    success_url = reverse_lazy('jobs:job_list')
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(owner=self.request.user)
-
-    def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if obj.owner != self.request.user:
-            raise PermissionDenied
-        return super().dispatch(request, *args, **kwargs)
+def delete_job(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+    if request.user == job.owner:
+        job.delete()
+    return redirect('jobs:job_list')

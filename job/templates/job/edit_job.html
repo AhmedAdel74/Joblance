@@ -169,6 +169,10 @@
                                 <button class="boxed-btn3 w-100" type="submit">Save</button>
                                 {% endbuttons %}
                             </form>
+                            <form method="POST" action="{% url 'jobs:delete_job' job.id %}">
+                                {% csrf_token %}
+                                <input type="submit" value="Delete Job" class="boxed-btn3 w-100">
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-4">
