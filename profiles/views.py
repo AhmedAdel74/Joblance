@@ -84,35 +84,22 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
 
 
 def others(request):
-    others = Profile.objects.all()
+    query = request.GET.get('q')
+    others = None
+    if query:
+        others = Profile.objects.filter(
+            Q(user__username__icontains=query) | Q(email__icontains=query)
+        )
+    else:
+        others = Profile.objects.all()
+    
     paginator = Paginator(others, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context = {'users': page_obj}
+    context = {'users': page_obj, 'query': query}
     return render(request, 'profiles/others.html', context)
 
 
 def other(request, id):
     profile = get_object_or_404(Profile, id=id)
     return render(request, 'profiles/other.html', {'user': profile})
-
-
-def search(request):
-    query = request.GET.get('q')
-    results = []
-    if query:
-        query_list = query.split()
-        # Use the Q object to create a query that searches for the query string
-        # across multiple fields
-        results = Profile.objects.filter(
-            Q(fname__icontains=query_list[0]) |
-            Q(lname__icontains=query_list[0]) |
-            Q(email__icontains=query_list[0])
-        ).distinct()
-        for word in query_list[1:]:
-            results = results.filter(
-                Q(fname__icontains=word) |
-                Q(lname__icontains=word) |
-                Q(email__icontains=word)
-            ).distinct()
-    return render(request, 'profiles/search.html', {'query': query, 'results': results})

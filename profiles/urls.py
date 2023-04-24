@@ -17,5 +17,4 @@ urlpatterns = [
 
     path('others/', views.others, name='others'),
     path('<int:id>', views.other, name='other'),
-    path('search/', views.search, name='search'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -78,7 +78,7 @@
             </ul>
             <form>
                 <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-                <input type="Search" name="q" placeholder="What are you looking for?">
+                <input type="Search" name="q" value= "{{ query|default:'' }}" placeholder="What are you looking for?">
                 <input type="submit" value="Search">
             </form>
             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
@@ -122,15 +122,15 @@
         {% endif %}
 
         {% for page in users.paginator.page_range %}
-        {% if page == users.number %}
-        <span class="page-number current-page">{{ page }}</span>
-        {% elif page > users.number|add:'-3' and page < users.number|add:'3' %} <a href="?page={{ page }}">{{ page
-            }}</a>
+            {% if page == users.number %}
+                <span class="page-number current-page">{{ page }}</span>
+            {% elif page > users.number|add:'-3' and page < users.number|add:'3' %} 
+                <a href="?page={{ page }}">{{ page }}</a>
             {% endif %}
-            {% endfor %}
+        {% endfor %}
 
             {% if users.has_next %}
-            <a href="?page={{ users.next_page_number }}">next</a>
+                <a href="?page={{ users.next_page_number }}">next</a>
             {% endif %}
     </div>
 
