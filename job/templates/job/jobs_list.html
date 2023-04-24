@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
 
+    <link rel="stylesheet" href="{% static 'css/adel_search.css'%}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
@@ -59,7 +60,7 @@
             <ul class="links">
                 <li><a href="{% url 'pages:home' %}">Home</a></li>
                 <li><a href="{% url 'jobs:job_list' %}">Browse Jobs</a></li>
-                <li><a href="#others profile from ahmed sharaf">Hire Now</a></li>
+                <li><a href="{% url 'profiles:others' %}">Hire Now</a></li>
                 <li>
                     <a href="#" class="io">More</a>
                     <!-- Start Megamenu -->
@@ -73,7 +74,8 @@
                             </li>
 
                             <li>
-                                <a href="#services"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                                <a href="{% url 'features:craftsmen' %}"><i
+                                        class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
 
 
@@ -131,7 +133,10 @@
             </div>
         </div>
         <!--/ bradcam_area  -->
+        <div>
 
+
+        </div>
         <!-- job_listing_area_start  -->
         <div class="job_listing_area plus_padding">
             <div class="container">
@@ -154,16 +159,11 @@
                                     <div class="col-md-6">
                                         <h4>Job Listing</h4>
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                    <div class="serch_cat d-flex justify-content-end">
-                                        <select>
-                                            <option data-display="Most Recent">Most Recent</option>
-                                            <option value="1">Marketer</option>
-                                            <option value="2">Wordpress </option>
-                                            <option value="4">Designer</option>
-                                        </select>
+                                    <div class="col-md-6">
+                                        <div class="serch_cat d-flex justify-content-end">
+
+                                        </div>
                                     </div>
-                                </div> -->
                                 </div>
                             </div>
                         </div>
@@ -316,7 +316,7 @@
                         <a href="{% url 'jobs:job_list' %}">Find a Job</a>
                     </li>
                     <li>
-                        <a href="#others profile from ahmed sharaf">Hire Now</a>
+                        <a href="{% url 'profiles:others' %}">Hire Now</a>
                     </li>
                     <li>
                         <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
@@ -376,6 +376,8 @@
     <script src="{% static 'js/plugins.js' %}"></script>
     <!-- <script src="js/gijgo.min.js"></script> -->
     <script src="{% static 'js/range.js' %}"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src="{% static 'js/adel_script.js' %}"></script>
 
 
 
