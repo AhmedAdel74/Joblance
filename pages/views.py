@@ -8,6 +8,7 @@ from job.models import Job
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+
 def index(request):
     jobs_list = Job.objects.all()[:6]
     context = {'jobs': jobs_list,
@@ -15,11 +16,9 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
-
-
-
 def home(request):
     return render(request, 'pages/home.html')
+
 
 @login_required()
 def send_message(request):
@@ -36,6 +35,4 @@ def send_message(request):
             [settings.EMAIL_HOST_USER],
         )
 
-    
-    return render(request, 'pages/feedback.html', {'myinfo':myinfo})
-
+    return render(request, 'pages/feedback.html', {'myinfo': myinfo})

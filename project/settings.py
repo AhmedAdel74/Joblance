@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    #my apps
+
+    # my apps
     'job',
     'pages',
     'profiles',
@@ -143,4 +143,3 @@ EMAIL_HOST_USER = 'ahmed.elsherif7474@gmail.com'
 EMAIL_HOST_PASSWORD = 'rrnkgsnbvjeafpwt'
 EMAIL_USE_TLS = True
 EMAIL_PORT = '587'
-
