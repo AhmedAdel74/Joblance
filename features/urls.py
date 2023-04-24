@@ -7,6 +7,9 @@ app_name = 'features'
 urlpatterns = [
     path('members/', views.members, name='members'),
     path('craftsmen/', views.craftsmen, name='craftsmen'),
+    path('AboutUs/', views.about_us, name='AboutUs'),
+    path('career/', views.career, name='career'),
+    path('interview/', views.interview, name='interview'),
 
 ]
 
