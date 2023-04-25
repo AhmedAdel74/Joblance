@@ -1,6 +1,6 @@
 from django.forms import SlugField
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Job
+from .models import Job, Apply
 from django.core.paginator import Paginator
 from .form import ApplyForm, JobForm
 from django.urls import reverse
@@ -36,9 +36,10 @@ def job_details(request, slug):
     if request.method == 'POST':
         apply_form = ApplyForm(request.POST, request.FILES)
         if apply_form.is_valid():
-            myform = apply_form.save(commit=False)
-            myform.job = job_details
-            myform.save()
+            application = apply_form.save(commit=False)
+            application.job = job_details
+            application.applicant = request.user
+            application.save()
 
     else:
         apply_form = ApplyForm()
@@ -86,3 +87,22 @@ def delete_job(request, job_id):
     if request.user == job.owner:
         job.delete()
     return redirect('jobs:job_list')
+
+@login_required()
+def your_jobs(request):
+    jobs_list = Job.objects.filter(owner=request.user)
+    applications = Apply.objects.filter(job__in=jobs_list).select_related('applicant')
+
+    myfilter = JobFilter(request.GET, queryset=jobs_list)
+    jobs_list = myfilter.qs
+
+    paginator = Paginator(jobs_list, 5)  # Show 5 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'jobs': page_obj,
+               'forcount': jobs_list,
+               'myfilter': myfilter,
+               'applications': applications,
+               }
+    return render(request, 'job/your_jobs.html', context)

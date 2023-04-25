@@ -133,7 +133,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="bradcam_text">
-                            <h3>{{forcount.count}}+ Jobs Available</h3>
+                            <h3>Your listed jobs</h3>
                         </div>
                     </div>
                 </div>
@@ -178,8 +178,6 @@
                         <div class="job_lists m-0">
                             <div class="row">
                                 {% for job in jobs %}
-
-                                {% if job.owner == user %}
                                 <div class="col-lg-12 col-md-12">
                                     <div class="single_jobs white-bg d-flex justify-content-between">
                                         <div class="jobs_left d-flex align-items-center">
@@ -189,16 +187,17 @@
                                                     <h4>{{job.title}}</h4>
                                                 </a>
                                                 <div class="links_locat d-flex align-items-center">
+
+
+                                                    {% for application in applications %}
+                                                    {% if application.job == job %}
                                                     <div class="location">
-                                                        <p> <i class="fa-solid fa-user"></i>You</p>
+                                                        <a href=""><p> <i class="fa-solid fa-pen-nib"></i>{{application.applicant.username }}</p></a>
                                                     </div>
-                                                    <div class="location">
-                                                        <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}},
-                                                            {{job.country}}</p>
-                                                    </div>
-                                                    <div class="location">
-                                                        <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
-                                                    </div>
+                                                    {% endif %}
+                                                    {% endfor %}
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -213,41 +212,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                {% else %}
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="single_jobs white-bg d-flex justify-content-between">
-                                        <div class="jobs_left d-flex align-items-center">
-
-                                            <div class="jobs_conetent">
-                                                <a href="{% url 'jobs:job_details' job.slug %}">
-                                                    <h4>{{job.title}}</h4>
-                                                </a>
-                                                <div class="links_locat d-flex align-items-center">
-                                                    <div class="location">
-                                                        <p> <i class="fa-solid fa-user"></i> {{job.owner}}</p>
-                                                    </div>
-                                                    <div class="location">
-                                                        <p> <i class="fas fa-map-marker-alt fa-fw"></i> {{job.city}},
-                                                            {{job.country}}</p>
-                                                    </div>
-                                                    <div class="location">
-                                                        <p> <i class="fa fa-clock-o"></i> {{job.job_type}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jobs_right">
-                                            <div class="apply_now">
-                                                <a href="{% url 'jobs:job_details' job.slug %}" class="boxed-btn3">Apply
-                                                    Now</a>
-                                            </div>
-                                            <div class="date">
-                                                <p>Published at: {{job.published_at|date:'d M o'}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
+                                {% empty %}
+                                <p>You have no jobs.</p>
                                 {% endfor %}
                             </div>
 
