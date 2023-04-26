@@ -15,7 +15,10 @@ def SignupPage(request):
         email = request.POST.get('email')
         pass1 = request.POST.get('password1')
         # pass2=request.POST.get('password2')
-        if form.is_valid():
+        if User.objects.filter(username=uname).exists() == True or User.objects.filter(email=email).exists() == True:
+            messages.info(
+                request, f"We regret to inform you that the selected username {uname} or email {email} is already registered in our system. We kindly request that you choose a different username and email address.")
+        elif form.is_valid():
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
@@ -29,9 +32,7 @@ def SignupPage(request):
             messages.error(request, "Password is required.")
         elif email == "":
             messages.error(request, "email is required.")
-        elif User.objects.filter(username=uname).exists() == True or User.objects.filter(email=email).exists() == True:
-            messages.info(
-                request, f"We regret to inform you that the selected username {uname} or email {email} is already registered in our system. We kindly request that you choose a different username and email address.")
+        
         else:
             messages.error(
                 request, f'Please correct the errors below.  {form.error_messages}')
@@ -41,24 +42,33 @@ def SignupPage(request):
     return render(request, 'registration\signup.html', {'form': form})
 
 
+
 def LoginPage(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['pass']
-
-        # loop through all User objects in the Login module
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(
-                request, "Authentication successful. You are now logged in to the website.")
-            return redirect('pages:home')
-
-            # username and/or password do not exist, so return an error response
+        user = None
+        # Check if the user entered an email or username
+        if '@' in username:
+            # If the input contains '@', assume it's an email address
+            user = User.objects.filter(email=username).first()
         else:
-            messages.warning(
-                request, f"Authentication failed due to either an incorrect username or password, or the non-existence of a user with the username '{username}'.")
-            return render(request, 'registration\login.html')
+            # Otherwise, assume it's a username
+            user = User.objects.filter(username=username).first()
+        # loop through all User objects in the Login module
+        if user is not None:
+            user = authenticate(request, username=user.username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(
+                    request, "Authentication successful. You are now logged in to the website.")
+                return redirect('pages:home')
+
+                # username and/or password do not exist, so return an error response
+            
+        messages.warning(
+            request, f"Authentication failed due to either an incorrect username or password, or the non-existence of a user with the username '{username}'.")
+        return render(request, 'registration\login.html')
     else:
         return render(request, 'registration\login.html')
 
@@ -68,13 +78,13 @@ def LogoutPage(request):
     return redirect('pages:index')
 
 
-def checkExistUser(request):
-    username = request.POST['username']
-    email = request.POST['email']
-    for user in Login.objects.all():
-        if user.username == username or user.email == email:
-            # username and password exist, so return a success response
-            return True
+# def checkExistUser(request):
+#     username = request.POST['username']
+#     email = request.POST['email']
+#     for user in Login.objects.all():
+#         if user.username == username or user.email == email:
+#             # username and password exist, so return a success response
+#             return True
 
-        # username and/or password do not exist, so return an error response
-    return False
+#         # username and/or password do not exist, so return an error response
+#     return False
