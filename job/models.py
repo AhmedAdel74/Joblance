@@ -13,6 +13,22 @@ CURRENT_CITY = (
     ('Giza', 'Giza'),
     ('ALexandria', 'ALexandria'),
     ('Ismailia', 'Ismailia'),
+    ('Port Said', 'Port Said'),
+    ('Suez', 'Suez'),
+    ('Luxor', 'Luxor'),
+    ('Mansoura', 'Mansoura'),
+    ('El-Mahalla', 'El-Mahalla'),
+    ('Tanta', 'Tanta'),
+    ('Aswan', 'Aswan'),
+    ('Asyut', 'Asyut'),
+    ('Zagazig', 'Zagazig'),
+    ('Damietta', 'Damietta'),
+    ('Damanhur', 'Damanhur'),
+    ('Minya', 'Minya'),
+    ('Sohag', 'Sohag'),
+    ('Qena', 'Qena'),
+    ('Hurghada', 'Hurghada'),
+    ('Banha', 'Banha'),
 )
 
 CURRENT_COUNTRY = (
@@ -56,8 +72,7 @@ class Category(models.Model):
 
 
 class Apply(models.Model):
-    job = models.ForeignKey(
-        Job, related_name='apply_job', on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, related_name='apply_job', on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     applicant = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField(max_length=100)

@@ -42,6 +42,8 @@
 </head>
 
 <body>
+
+    
     <Header>
         <div class="container">
             <a href="{% url 'pages:index' %}" class="logo">
@@ -109,6 +111,8 @@
         </div>
 
     </Header>
+
+
     <!-- The part responsible for the error messages -->
     <div id="mydiv">
         {% if messages %}
@@ -176,13 +180,15 @@
                     <h2>Want a craftman?</h2>
                     <p>Get the chance to visit the craftsmen world!</p>
                 </div>
-                <a href="#">Visit</a>
+                <a href="{% url 'features:craftsmen' %}">Visit</a>
             </div>
         </div>
     </div>
     </div>
 
     <!--End-->
+
+    <div class="spikes"></div>
 
     <footer>
         <div class="container">

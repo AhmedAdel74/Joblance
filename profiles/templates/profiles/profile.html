@@ -85,23 +85,7 @@
         </div>
 
     </Header>
-    <!-- <div id="mydiv">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{message.tags}}">
-                        <strong>{{ message }}</strong>
-                </div>
-            {% endfor %}
-        {% endif %}
-        <script>
-            setTimeout(() => {
-            const alerts = document.querySelectorAll(".alert");
-            alerts.forEach(alert => {
-                alert.style.display = "none";
-            });
-        }, 4000);
-        </script>
-    </div> -->
+    
     <section>
         <center>
             <div class="profile">
@@ -148,7 +132,15 @@
                             style="padding-left: 10px;"><a href="{{ profile.file.url }}" style="color: black;
            text-decoration:none;">{{profile.file}}</a></strong>
                     </div>
-                    <br />
+                    
+                    <br>
+
+                    <a href="{% url 'profiles:edite' %}">
+                        <button class="edite">My Joblist</button>
+                    </a>
+                   
+                    <br><br>
+
 
                     <div class="infomayar" style="margin-top: 0px;
            padding-top: 0px;
@@ -178,7 +170,7 @@
                     <br />
 
                     <a href="{% url 'profiles:edite' %}">
-                        <button class="edite">Edite Profile</button>
+                        <button class="edite">Edit Profile</button>
                     </a>
                     <br />
                     <a href="{% url 'profiles:password_change' %}">
@@ -192,10 +184,16 @@
         </center>
     </section>
 
-    <br />
-    <br />
-    <br />
-    <br />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
@@ -221,6 +219,9 @@
     <br>
     <br>
     <section style="margin-top: 330px;">
+
+        <div class="spikes"></div>
+
         <footer>
             <div class="container">
                 <div class="box">
