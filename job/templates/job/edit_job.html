@@ -72,16 +72,19 @@
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
                             </li>
                             <li>
-                                <a href="{% url 'features:AboutUs' %}"><i class="far fa-chart-bar fa-fw"></i>About Us</a>
+                                <a href="{% url 'features:AboutUs' %}"><i class="far fa-chart-bar fa-fw"></i>About
+                                    Us</a>
                             </li>
-                            
+
                             <li>
-                                <a href="{% url 'features:career' %}"><i class="far fa-comments fa-fw"></i>Career Advices</a>
-                             </li>
+                                <a href="{% url 'features:career' %}"><i class="far fa-comments fa-fw"></i>Career
+                                    Advices</a>
+                            </li>
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                                <a href="{% url 'features:craftsmen' %}"><i
+                                        class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
 
                             <li>
@@ -89,8 +92,9 @@
                                     feedback</a>
                             </li>
                             <li>
-                                <a href="{% url 'features:interview' %}"><i class="far fa-comments fa-fw"></i>Interview Tips</a>
-                             </li>
+                                <a href="{% url 'features:interview' %}"><i class="far fa-comments fa-fw"></i>Interview
+                                    Tips</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
@@ -102,10 +106,10 @@
 
                     {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
-                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
+                        <a class="boxed-btn3" href="{% url 'registration:logout' %}" style="float: right;">Logout</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
+                        <a href="{% url 'profiles:profile' %}" class="boxed-btn3">Profile</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">

@@ -108,10 +108,10 @@
                 <div class="Appointment">
                     {% if request.user.is_authenticated %}
                     <div class="d-none d-lg-block">
-                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
+                        <a class="boxed-btn3" href="{% url 'registration:logout' %}" style="float: right;">Logout</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
+                        <a href="{% url 'profiles:profile' %}" class="boxed-btn3">Profile</a>
                     </div>
                     {% else %}
                     <div class="d-none d-lg-block">
@@ -192,7 +192,9 @@
                                                     {% for application in applications %}
                                                     {% if application.job == job %}
                                                     <div class="location">
-                                                        <a href=""><p> <i class="fa-solid fa-pen-nib"></i>{{application.applicant.username }}</p></a>
+                                                        <a href="">
+                                                            <p> <i class="fa-solid fa-pen-nib"></i>{{application.applicant.username}}</p>
+                                                        </a>
                                                     </div>
                                                     {% endif %}
                                                     {% endfor %}

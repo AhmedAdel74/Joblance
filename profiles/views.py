@@ -65,7 +65,7 @@ def edite(request):
         userform = UserForm(instance=request.user)
         profileform = ProfileForm(instance=profile)
 
-    return render(request, 'profiles/edite.html',
+    return render(request, 'profiles/edit.html',
                   {
                       'userform': userform,
                       'profileform': profileform})

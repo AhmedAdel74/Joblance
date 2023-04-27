@@ -63,16 +63,19 @@
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
                             </li>
                             <li>
-                                <a href="{% url 'features:AboutUs' %}"><i class="far fa-chart-bar fa-fw"></i>About Us</a>
+                                <a href="{% url 'features:AboutUs' %}"><i class="far fa-chart-bar fa-fw"></i>About
+                                    Us</a>
                             </li>
-                            
+
                             <li>
-                                <a href="{% url 'features:career' %}"><i class="far fa-comments fa-fw"></i>Career Advices</a>
-                             </li>
+                                <a href="{% url 'features:career' %}"><i class="far fa-comments fa-fw"></i>Career
+                                    Advices</a>
+                            </li>
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
+                                <a href="{% url 'features:craftsmen' %}"><i
+                                        class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
 
                             <li>
@@ -80,8 +83,9 @@
                                     feedback</a>
                             </li>
                             <li>
-                                <a href="{% url 'features:interview' %}"><i class="far fa-comments fa-fw"></i>Interview Tips</a>
-                             </li>
+                                <a href="{% url 'features:interview' %}"><i class="far fa-comments fa-fw"></i>Interview
+                                    Tips</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
@@ -91,15 +95,18 @@
                 <div class="Appointment">
 
                     {% if request.user.is_authenticated %}
+
                     <div class="d-none d-lg-block">
-                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}" style="float: right;">profile</a>
+                        <a class="boxed-btn3" href="{% url 'registration:logout' %}" style="float: right;">Logout</a>
                     </div>
                     <div class="d-none d-lg-block">
-                        <a href="{% url 'registration:logout' %}" class="boxed-btn3">Logout</a>
-                        {% endif %}
+                        <a href="{% url 'profiles:profile' %}" class="boxed-btn3">Profile</a>
                     </div>
+
+                    {% endif %}
                 </div>
             </div>
+        </div>
 
     </Header>
     <br>
@@ -162,18 +169,23 @@
                             <span>joblance</span>
                         </h2>
                         <div class="paragraph py-4 w-75 ">
-                           
+
                             <p class="para font-roboto">
-                                It is an online platform designed to connect job seekers and employers. <br> 
-                                It offers a wide range of features, including a craftsman page for skilled professionals, 
-                                career advice for job seekers, interview tips to help candidates succeed in their job search, 
+                                It is an online platform designed to connect job seekers and employers. <br>
+                                It offers a wide range of features, including a craftsman page for skilled
+                                professionals,
+                                career advice for job seekers, interview tips to help candidates succeed in their job
+                                search,
                                 and a job posting section where employers can post job vacancies or hire freelancers.
                                 <br><br>
-                                With Joblance, businesses can find the right talent for their projects, and job seekers can 
-                                browse through multiple job openings and apply for ones that match their skills and preferences.          
+                                With Joblance, businesses can find the right talent for their projects, and job seekers
+                                can
+                                browse through multiple job openings and apply for ones that match their skills and
+                                preferences.
                                 <br><br>
-                                Whether you're looking for full-time employment or freelance work, Joblance is the perfect platform 
-                                to help you achieve your goals. 
+                                Whether you're looking for full-time employment or freelance work, Joblance is the
+                                perfect platform
+                                to help you achieve your goals.
                             </p>
 
 

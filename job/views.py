@@ -99,7 +99,6 @@ def your_jobs(request):
     paginator = Paginator(jobs_list, 5)  # Show 5 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
     context = {'jobs': page_obj,
                'forcount': jobs_list,
                'myfilter': myfilter,
