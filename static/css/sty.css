@@ -11,7 +11,7 @@ body {
 .box {
     box-sizing: border-box;
     width: 800px;
-    height: 1600px;
+    height: 1650px;
     border: 2px solid black;
     box-shadow: -3px -3px 7px black 3px 3px 5px rgba(49, 104, 121, 0.288);
     border-radius: 5px;

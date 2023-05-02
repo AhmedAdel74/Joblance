@@ -20,7 +20,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = models.Profile
         fields = ['image', 'phone_number', 'city', 'dob', 'gender', 'education',
-                  'experience', 'language', 'tecskill', 'softskill', 'bio', 'cv', 'file']
+                  'experience', 'language', 'tecskill', 'softskill', 'bio', 'cv', 'file' , 'face']
         widgets = {
             'image': widgets.FileInput(attrs={
                 'class': 'fa fa-camera'

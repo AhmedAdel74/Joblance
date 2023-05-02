@@ -43,6 +43,8 @@ class Profile(models.Model):
                           max_length=40, default='none')
     file = models.FileField(upload_to=user_directory_path,
                             max_length=40, default='none')
+    face=models.CharField(null=False,blank=False, max_length=200)
+    
 
     class Meta:
         ordering = ['-id']
