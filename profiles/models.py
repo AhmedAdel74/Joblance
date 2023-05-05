@@ -7,6 +7,7 @@ from project.settings import MEDIA_ROOT
 from PIL import Image
 from django.db.models.signals import post_save
 from django.utils.text import slugify
+from urllib.parse import urlparse
 # محتاجة تعملى migrations و migrate
 # Create your models here.
 
@@ -51,6 +52,20 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+    
+    face_name = models.CharField(null=True, blank=True, max_length=200)
+
+    def save(self, *args, **kwargs):
+        if self.face:
+            parsed_url = urlparse(self.face)
+            path = parsed_url.path
+            if path.startswith('/'):
+                path = path[1:]
+            if path.endswith('/'):
+                path = path[:-1]
+            name = path.split('/')[-1]
+            self.face_name = name
+        super().save(*args, **kwargs)
 
     # def save(self):
         # super().save()
