@@ -458,6 +458,8 @@ header .links .menu:hover .mega_menu {
 
 .articles .container {
     display: grid;
+    max-height: 800px;
+    overflow-y: auto;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 40px;
     
@@ -477,7 +479,7 @@ header .links .menu:hover .mega_menu {
     -moz-transition: var(--main-transition);
     -ms-transition: var(--main-transition);
     -o-transition: var(--main-transition);
-    perspective: 1000px;
+    perspective: 200px;
     background-color: transparent;
 }
 .flip-card-inner {
@@ -922,9 +924,21 @@ footer .copyright {
     border-top: 1px solid #444;
 
 }
+.bton {
+    background-color: #1fb38e;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+   justify-content: center;
+}
+
 
 
 /* End Footer */
-
 
 

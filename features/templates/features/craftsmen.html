@@ -16,11 +16,22 @@
     <!--main Templete-3 Css File-->
     <link rel="stylesheet" href="{% static 'css/craftsmen.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/rating.css'%}">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
@@ -90,6 +101,20 @@
         </div>
 
     </Header>
+    <div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <script>
+            setTimeout(() => {
+                $(".alert").alert("close");
+            }, 4000)
+        </script>
+    </div>
 
 
     <!--Start landing-->
@@ -148,6 +173,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                {% comment %} button {% endcomment %}
+                <div class="info">
+                </div>
+                <div class="d-none d-lg-block p-5">
+                    <a href="{% url 'features:craftsman_detail' craftsman_id=worker.id %}" class="button-50">Add a review</a>
                 </div>
 
             </div>
@@ -209,30 +240,29 @@
 
     <div class="testimonials" id="testimonials">
         <div class="title">
-            Testimonials
+            Top rated
         </div>
         <div class="container">
-            <div class="box">
-
-                <img src="{% static 'img/images/WickerMaker.jpg' %}" alt="">
-
-                <h2>Elhossiny</h2>
-                <span class="job">Wicker Maker</span>
-                <div class="rate">
-                    <i class="filled fa-regular fa-star"></i>
-                    <i class="filled fa-regular fa-star"></i>
-                    <i class="filled fa-regular fa-star"></i>
-                    <i class="filled fa-regular fa-star"></i>
-                    <i class=" fa-regular fa-star"></i>
-
+            {% for item in top_rate %}
+                <div class="box">
+                    <img src="{{ item.image.url }} " alt="">
+                    <h2>{{ item.name }}</h2>
+                    <span class="job">{{ item.profession }}</span>
+                    <div class="review-feedback BQ">
+                    
+                        <span class="fa {% if item.average_review == 0.5 %}fa-star-half-full {% elif item.average_review < 0.5 %}fa fa-star{% elif  item.average_review > 0.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if item.average_review == 1.5 %}fa-star-half-full {% elif item.average_review < 1.5 %}fa fa-star{% elif  item.average_review > 1.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if item.average_review == 2.5 %}fa-star-half-full {% elif item.average_review < 2.5 %}fa fa-star{% elif  item.average_review > 2.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if item.average_review == 3.5 %}fa-star-half-full {% elif item.average_review < 3.5 %}fa fa-star{% elif  item.average_review > 3.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if item.average_review == 4.5 %}fa-star-half-full {% elif item.average_review < 4.5 %}fa fa-star{% elif  item.average_review > 4.5 %}fa fa-star-full{% endif %}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{item.average_review | stringformat:".1f"}} / 5
+                    </div>
+                    <br>
+                    <br>
+                    <p>{{ item.description }}</p>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores et reiciendis voluptatum, amet est
-                    natus quaerat
-                    ducimus</p>
-
-
-            </div>
-            <div class="box">
+            {% endfor %}
+            {% comment %} <div class="box">
 
                 <img src="{% static 'img/images/BashoutMaker.jpg' %}" alt="">
 
@@ -328,7 +358,7 @@
                     natus quaerat
                     ducimus</p>
 
-            </div>
+            </div> {% endcomment %}
 
         </div>
 
