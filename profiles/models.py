@@ -8,6 +8,10 @@ from PIL import Image
 from django.db.models.signals import post_save
 from django.utils.text import slugify
 from urllib.parse import urlparse
+from django.db.models import Avg, Count
+from django.utils.translation import gettext_lazy as _
+
+
 # محتاجة تعملى migrations و migrate
 # Create your models here.
 
@@ -55,6 +59,20 @@ class Profile(models.Model):
     
     face_name = models.CharField(null=True, blank=True, max_length=200)
 
+    def average_review(self):
+         review = Rate.objects.filter(RA_Other=self).aggregate(average=Avg('RAting'))
+         avg = 0
+         if review["average"] is not None:
+             avg = float(review["average"])
+         return avg
+
+    def count_review(self):
+        reviews = Rate.objects.filter(RA_Other=self).aggregate(count=Count('id'))
+        cnt = 0
+        if reviews["count"] is not None:
+            cnt = int(reviews["count"])
+        return cnt
+
     def save(self, *args, **kwargs):
         if self.face:
             parsed_url = urlparse(self.face)
@@ -67,6 +85,9 @@ class Profile(models.Model):
             self.face_name = name
         super().save(*args, **kwargs)
 
+
+    
+
     # def save(self):
         # super().save()
 
@@ -76,11 +97,29 @@ class Profile(models.Model):
         # output_size = (300,300)
         # img.thumbnail(output_size)
         # img.save(self.image.path)
+    
+
+
+class Rate(models.Model):
+
+    RAUser = models.ForeignKey(User , on_delete=models.CASCADE , blank=True, null=True ,verbose_name=_("User"))
+    RA_Other = models.ForeignKey('Profile' , on_delete=models.CASCADE , blank=True, null=True ,verbose_name=_("Profile"))
+    RAting = models.IntegerField(default='0')
+    RADescription = models.TextField(max_length=10000 , blank=True, null=True )
+
+    
+
+    def __str__(self):
+        return f"{self.RAUser} reviewed  {self.RA_Other}"
 
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
-        user_profile = Profile.objects.create(user=kwargs['instance'])
-
+        try:
+            user_profile = Profile.objects.create(user=kwargs['instance'])
+        except Exception as e:
+            print(f"Error saving profile: {str(e)}")
 
 post_save.connect(create_profile, sender=User)
+
+

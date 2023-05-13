@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileForm
-from .models import Profile
+from .models import Profile, Rate
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.urls import reverse
 
 # Create your views here.
 
@@ -101,5 +102,37 @@ def others(request):
 
 
 def other(request, id):
-    profile = get_object_or_404(Profile, id=id)
-    return render(request, 'profiles/other.html', {'user': profile})
+    profile = Profile.objects.get(id=id)
+    Rev =profile.average_review()
+    rating_details = Rate.objects.filter(RA_Other=profile)
+    context = {'user': profile ,'rating_details': rating_details , 'Rev':Rev}
+    return render(request, 'profiles/other.html', context)
+
+def submit_rating(request, rateid):
+    if request.method == 'POST':
+        user = request.user
+        other = Profile.objects.get(id=rateid)
+        rating_value = request.POST.get('rating')
+        description = request.POST.get('description')
+        existing_rating = Rate.objects.filter(RAUser=user, RA_Other=other).first()
+        if existing_rating:
+            # An existing rating was found, update it with new values
+            if rating_value is None and description == '':
+                # Neither rating nor description is provided, inform the user to fill in one of the two fields
+                messages.warning(request, "Please fill in either the rating or the description field.")
+            else:
+                existing_rating.RAting = rating_value
+                existing_rating.RADescription = description
+                existing_rating.save()
+                messages.success(request, "The rating has been updated successfully.")
+        else:
+            # No rating exists for this user and craftsman, create and save a new Rating object
+            if rating_value is None and description == '':
+                # Neither rating nor description is provided, inform the user to fill in one of the two fields
+                messages.warning(request, "Please fill in either the rating or the description field.")
+            else:
+                rating = Rate(RAUser=user, RA_Other=other, RAting=rating_value, RADescription=description)
+                rating.save()
+                messages.success(request, "The evaluation of Craftsmen has been completed successfully.")
+        return redirect('profiles:other', id=rateid)
+    
