@@ -103,36 +103,50 @@ def others(request):
 
 def other(request, id):
     profile = Profile.objects.get(id=id)
-    Rev =profile.average_review()
+    Revq = profile.average_quality()
+    Revs = profile.average_speed()
+    Revm = profile.average_moralistic()
     rating_details = Rate.objects.filter(RA_Other=profile)
-    context = {'user': profile ,'rating_details': rating_details , 'Rev':Rev}
+    context = {'user': profile ,'rating_details': rating_details , 'RAtingQuality':Revq , 'RAtingSpeed':Revs , 'RAtingMoralistic':Revm}
     return render(request, 'profiles/other.html', context)
 
 def submit_rating(request, rateid):
     if request.method == 'POST':
         user = request.user
         other = Profile.objects.get(id=rateid)
-        rating_value = request.POST.get('rating')
+        quality_rating = request.POST.get('quality_rating')
+        speed_rating = request.POST.get('speed_rating')
+        moralistic_rating = request.POST.get('moralistic_rating')
         description = request.POST.get('description')
         existing_rating = Rate.objects.filter(RAUser=user, RA_Other=other).first()
+        
         if existing_rating:
             # An existing rating was found, update it with new values
-            if rating_value is None and description == '':
-                # Neither rating nor description is provided, inform the user to fill in one of the two fields
-                messages.warning(request, "Please fill in either the rating or the description field.")
+            if quality_rating is None and speed_rating is None and moralistic_rating is None and description == '':
+                # No rating or description is provided, inform the user to fill in at least one of the fields
+                messages.warning(request, "Please fill in at least one of the rating fields or the description field.")
             else:
-                existing_rating.RAting = rating_value
+                existing_rating.RAtingQuality = quality_rating
+                existing_rating.RAtingSpeed = speed_rating
+                existing_rating.RAtingMoralistic = moralistic_rating
                 existing_rating.RADescription = description
                 existing_rating.save()
                 messages.success(request, "The rating has been updated successfully.")
         else:
-            # No rating exists for this user and craftsman, create and save a new Rating object
-            if rating_value is None and description == '':
-                # Neither rating nor description is provided, inform the user to fill in one of the two fields
-                messages.warning(request, "Please fill in either the rating or the description field.")
+            # No rating exists for this user and profile, create and save a new Rating object
+            if quality_rating is None and speed_rating is None and moralistic_rating is None and description == '':
+                # No rating or description is provided, inform the user to fill in at least one of the fields
+                messages.warning(request, "Please fill in at least one of the rating fields or the description field.")
             else:
-                rating = Rate(RAUser=user, RA_Other=other, RAting=rating_value, RADescription=description)
+                rating = Rate(
+                    RAUser=user,
+                    RA_Other=other,
+                    RAtingQuality=quality_rating,
+                    RAtingSpeed=speed_rating,
+                    RAtingMoralistic=moralistic_rating,
+                    RADescription=description
+                )
                 rating.save()
-                messages.success(request, "The evaluation of Craftsmen has been completed successfully.")
+                messages.success(request, "The evaluation of the profile has been completed successfully.")
+        
         return redirect('profiles:other', id=rateid)
-    

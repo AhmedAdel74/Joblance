@@ -27,7 +27,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
@@ -122,7 +122,37 @@
                     <div class="content">
                         <h2>{{user.user}}</h2>
                     </div>
-
+                    
+                    <div class="review-feedback BQ">
+                        <h4>Quality:</h4>
+                        <span class="fa {% if RAtingQuality == 0.5 %}fa-star-half-full {% elif RAtingQuality < 0.5 %}fa fa-star{% elif  RAtingQuality > 0.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if RAtingQuality == 1.5 %}fa-star-half-full {% elif RAtingQuality < 1.5 %}fa fa-star{% elif  RAtingQuality > 1.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if RAtingQuality == 2.5 %}fa-star-half-full {% elif RAtingQuality < 2.5 %}fa fa-star{% elif  RAtingQuality > 2.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if RAtingQuality == 3.5 %}fa-star-half-full {% elif RAtingQuality < 3.5 %}fa fa-star{% elif  RAtingQuality > 3.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if RAtingQuality == 4.5 %}fa-star-half-full {% elif RAtingQuality < 4.5 %}fa fa-star{% elif  RAtingQuality > 4.5 %}fa fa-star-full{% endif %}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{RAtingQuality | stringformat:".1f"}} / 5
+                    </div>
+                    
+                    <div class="review-feedback BS">
+                        <h4>Speed:</h4>
+                        <span class="fa {% if RAtingSpeed == 0.5 %}fa-star-half-full {% elif RAtingSpeed < 0.5 %}fa fa-star{% elif  RAtingSpeed > 0.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if RAtingSpeed == 1.5 %}fa-star-half-full {% elif RAtingSpeed < 1.5 %}fa fa-star{% elif  RAtingSpeed > 1.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if RAtingSpeed == 2.5 %}fa-star-half-full {% elif RAtingSpeed < 2.5 %}fa fa-star{% elif  RAtingSpeed > 2.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if RAtingSpeed == 3.5 %}fa-star-half-full {% elif RAtingSpeed < 3.5 %}fa fa-star{% elif  RAtingSpeed > 3.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if RAtingSpeed == 4.5 %}fa-star-half-full {% elif RAtingSpeed < 4.5 %}fa fa-star{% elif  RAtingSpeed > 4.5 %}fa fa-star-full{% endif %}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{RAtingSpeed | stringformat:".1f"}} / 5
+                    </div>
+                    
+                    <div class="review-feedback BM">
+                        <h4>Moralistic:</h4>
+                        <span class="fa {% if RAtingMoralistic == 0.5 %}fa-star-half-full {% elif RAtingMoralistic < 0.5 %}fa fa-star{% elif  RAtingMoralistic > 0.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if RAtingMoralistic == 1.5 %}fa-star-half-full {% elif RAtingMoralistic < 1.5 %}fa fa-star{% elif  RAtingMoralistic > 1.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if RAtingMoralistic == 2.5 %}fa-star-half-full {% elif RAtingMoralistic < 2.5 %}fa fa-star{% elif  RAtingMoralistic > 2.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if RAtingMoralistic == 3.5 %}fa-star-half-full {% elif RAtingMoralistic < 3.5 %}fa fa-star{% elif  RAtingMoralistic > 3.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if RAtingMoralistic == 4.5 %}fa-star-half-full {% elif RAtingMoralistic < 4.5 %}fa fa-star{% elif  RAtingMoralistic > 4.5 %}fa fa-star-full{% endif %}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{RAtingMoralistic | stringformat:".1f"}} / 5
+                    </div>
+                    
                     <div class="main">
                         <p style="color:black"><i class="fa fa-envelope ">
                             </i> {{user.user.email}}</p>
@@ -134,7 +164,6 @@
                             </i> {{user.dob}}</p>
                         <p style="color:black"><i class="fa fa-user ">
                             </i> {{user.gender}}</p>
-                            </i> {{Rev}}</p>
                             <div class="options">
                                 <a href="https://www.facebook.com/messages/t/{{user.face_name}}" 
                                     style =
@@ -222,15 +251,47 @@
             <label for="rating">Rate your experience:</label>
             <br>
             <div class="rating">
-                <input class="star star-5" id="star-5" type="radio" name="rating" value="5"/>
+                <input class="star star-5" id="star-5" type="radio" name="quality_rating" value="5"/>
                 <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="rating" value="4"/>
+                <input class="star star-4" id="star-4" type="radio" name="quality_rating" value="4"/>
                 <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="rating" value="3"/>
+                <input class="star star-3" id="star-3" type="radio" name="quality_rating" value="3"/>
                 <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="rating" value="2"/>
+                <input class="star star-2" id="star-2" type="radio" name="quality_rating" value="2"/>
                 <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="rating" value="1"/>
+                <input class="star star-1" id="star-1" type="radio" name="quality_rating" value="1"/>
+                <label class="star star-1" for="star-1"></label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="rating">Rate your experience:</label>
+            <br>
+            <div class="rating">
+                <input class="star star-5" id="star-5" type="radio" name="speed_rating" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="speed_rating" value="4"/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="speed_rating" value="3"/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="speed_rating" value="2"/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="speed_rating" value="1"/>
+                <label class="star star-1" for="star-1"></label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="rating">Rate your experience:</label>
+            <br>
+            <div class="rating">
+                <input class="star star-5" id="star-5" type="radio" name="moralistic_rating" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="moralistic_rating" value="4"/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="moralistic_rating" value="3"/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="moralistic_rating" value="2"/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="moralistic_rating" value="1"/>
                 <label class="star star-1" for="star-1"></label>
             </div>
         </div>
@@ -238,7 +299,7 @@
             <button type="submit" class="button-30">Submit or Edit Feedback</button>
             {% comment %} <button type="submit" class="button-30">Edit Review</button> {% endcomment %}            
         </div>
-</form>
+    </form>
 
 
     <br>
