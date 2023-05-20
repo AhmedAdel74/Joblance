@@ -94,7 +94,7 @@ def others(request):
     else:
         others = Profile.objects.all()
     
-    paginator = Paginator(others, 12)
+    paginator = Paginator(others, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'users': page_obj, 'query': query}
