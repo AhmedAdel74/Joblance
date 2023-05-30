@@ -240,6 +240,8 @@
 
 
                 <!--------------------start pictures area--------------------------->
+
+    <!--
                 <section id="Photos" class="pictures-area" data-aos="fade-up" data-aos-offset="500"
                     data-aos-easing="ease-in-sine">
                     <div class="container ">
@@ -332,8 +334,41 @@
                     </div>
             </div>
         </section>
-
+    -->
         <!--------------------end pictures area-------------------------->
+
+                <section class="they-say" data-aos="fade-up" data-aos-offset="500" data-aos-easing="ease-in-sine">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <div class="they-say-title">
+                            <h1 class="text-uppercase title-h1">Take a look at some of the traditional crafts at Joblance!</h1>
+                            <p class="para"> Hire one now! </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container carousel py-lg-5">
+                <div class="owl-carousel owl-theme">
+                    {% for job in jobs %}
+
+                    <div class="person row">
+                        <div class="col-lg-4 col-md-12 person-img">
+                            <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
+                        </div>
+                        <div class="col-lg-8 col-md-12 person-say">
+                            <h4 class="text-uppercase">{{job.title}}</h4>
+                            <p class="para">
+                                {{job.description}}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section> 
+
 
 
 
@@ -376,8 +411,12 @@
     </main>
 
     <div class="spikes"></div>
+
+   <!--Start Footer-->
     <footer>
         <div class="container">
+
+
             <div class="box">
                 <h3 style="color: #fff;">Joblance</h3>
                 <br>
@@ -400,10 +439,11 @@
                 </ul>
                 <br>
                 <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste
-                    aspernatur
+                    A big world in a small place
                 </p>
             </div>
+
+          
             <div class="box">
                 <ul class="links">
                     <li>
@@ -433,7 +473,7 @@
                 <div class="line">
                     <i class="far fa-clock fa-fw"></i>
                     <div class="info">
-                        Working Hours: 08:00-04:00
+                        Joblance Team Working Hours: 08:00-04:00
                     </div>
 
                 </div>
@@ -447,9 +487,10 @@
             </div>
 
         </div>
-        <p class="copyright">Made With &lt;3 By Joblance</p>
-
+       <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made<i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{% url 'features:members' %}" target="_blank">Joblance Team</a> </p>
     </footer>
+    <!--End Footer-->
+
     <!--jquery bootstrap-->
     <script src="{% static './js/jquery.3.4.1.js'%}"></script>
     <!--bootsrap js file-->

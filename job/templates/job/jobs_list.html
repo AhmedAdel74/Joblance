@@ -286,82 +286,87 @@
 
     <div class="spikes"></div>
 
-    <!-- footer start -->
-    <footer>
-        <div class="container">
-            <div class="box">
-                <h3 style="color: #fff;">Joblance</h3>
-                <br>
-                <ul class="social">
-                    <li>
-                        <a href="#" class="facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="youtube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                </ul>
-                <br>
-                <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste
-                    aspernatur
-                </p>
-            </div>
-            <div class="box">
-                <ul class="links">
-                    <li>
-                        <a href="{% url 'features:members' %}">Members</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'jobs:job_list' %}">Find a Job</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'profiles:others' %}">Hire Now</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="box">
-                <div class="line">
-                    <i class="fas fa-map-marker-alt fa-fw"></i>
-                    <div class="info">
-                        Cairo, Egypt
-                    </div>
-                </div>
-                <div class="line">
-                    <i class="far fa-clock fa-fw"></i>
-                    <div class="info">
-                        Working Hours: 08:00-04:00
-                    </div>
 
-                </div>
-                <div class="line">
-                    <i class="fas fa-phone-volume fa-fw"></i>
-                    <div class="info">
-                        +201151261692
-                        +201095625946
-                    </div>
-                </div>
-            </div>
+<!--Start Footer-->
+<footer>
+    <div class="container">
 
+
+        <div class="box">
+            <h3 style="color: #fff;">Joblance</h3>
+            <br>
+            <ul class="social">
+                <li>
+                    <a href="#" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <p class="text">
+                A big world in a small place
+            </p>
         </div>
-        <p class="copyright">Made With &lt;3 By Joblance</p>
 
-    </footer>
-    <!--/ footer end  -->
+      
+        <div class="box">
+            <ul class="links">
+                <li>
+                    <a href="{% url 'features:members' %}">Members</a>
+                </li>
+                <li>
+                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                </li>
+                <li>
+                    <a href="{% url 'profiles:others' %}">Hire Now</a>
+                </li>
+                <li>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                </li>
+                <li>
+                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="line">
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                <div class="info">
+                    Cairo, Egypt
+                </div>
+            </div>
+            <div class="line">
+                <i class="far fa-clock fa-fw"></i>
+                <div class="info">
+                    Joblance Team Working Hours: 08:00-04:00
+                </div>
+
+            </div>
+            <div class="line">
+                <i class="fas fa-phone-volume fa-fw"></i>
+                <div class="info">
+                    +201151261692
+                    +201095625946
+                </div>
+            </div>
+        </div>
+
+    </div>
+   <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a href="{% url 'features:members' %}" target="_blank">Joblance Team</a> </p>
+   
+
+</footer>
+<!--End Footer-->
 
     <!-- link that opens popup -->
     <!-- JS here -->
