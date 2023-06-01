@@ -90,7 +90,9 @@ def others(request):
     if query:
         others = Profile.objects.filter(
             Q(user__username__icontains=query) | Q(email__icontains=query)
-        )
+        ).annotate(
+            average_quality=Avg('rate__RAtingQuality')
+        ).order_by('-average_quality', '-id')
     else:
         others = Profile.objects.all().annotate(
             average_quality=Avg('rate__RAtingQuality')
