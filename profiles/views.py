@@ -11,7 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Avg, Q
 from django.urls import reverse
 
 # Create your views here.
@@ -92,9 +92,11 @@ def others(request):
             Q(user__username__icontains=query) | Q(email__icontains=query)
         )
     else:
-        others = Profile.objects.all()
+        others = Profile.objects.all().annotate(
+            average_quality=Avg('rate__RAtingQuality')
+        ).order_by('-average_quality', '-id')
     
-    paginator = Paginator(others, 4)
+    paginator = Paginator(others, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'users': page_obj, 'query': query}
