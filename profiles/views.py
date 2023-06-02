@@ -84,25 +84,31 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     # Sharaf Section
 
 
+def search_profiles(query):
+    return Profile.objects.filter(
+        Q(user__username__icontains=query) | Q(email__icontains=query)
+    ).annotate(
+        average_quality=Avg('rate__RAtingQuality')
+    ).order_by('-average_quality', '-id')
+
+def get_all_profiles():
+    return Profile.objects.all().annotate(
+        average_quality=Avg('rate__RAtingQuality')
+    ).order_by('-average_quality', '-id')
+
 def others(request):
     query = request.GET.get('q')
-    others = None
     if query:
-        others = Profile.objects.filter(
-            Q(user__username__icontains=query) | Q(email__icontains=query)
-        ).annotate(
-            average_quality=Avg('rate__RAtingQuality')
-        ).order_by('-average_quality', '-id')
+        others = search_profiles(query)
     else:
-        others = Profile.objects.all().annotate(
-            average_quality=Avg('rate__RAtingQuality')
-        ).order_by('-average_quality', '-id')
+        others = get_all_profiles()
     
-    paginator = Paginator(others, 10)
+    paginator = Paginator(others, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'users': page_obj, 'query': query}
     return render(request, 'profiles/others.html', context)
+
 
 
 def other(request, id):
@@ -111,7 +117,9 @@ def other(request, id):
     Revs = profile.average_speed()
     Revm = profile.average_moralistic()
     rating_details = Rate.objects.filter(RA_Other=profile)
-    context = {'user': profile ,'rating_details': rating_details , 'RAtingQuality':Revq , 'RAtingSpeed':Revs , 'RAtingMoralistic':Revm}
+    context = {'user': profile ,'rating_details': rating_details , 'RAtingQuality':Revq ,
+                'RAtingSpeed':Revs , 'RAtingMoralistic':Revm
+                }
     return render(request, 'profiles/other.html', context)
 
 def submit_rating(request, rateid):
