@@ -40,11 +40,12 @@ def job_details(request, slug):
         if apply_form.is_valid():
             application = apply_form.save(commit=False)
             application.job = job_details
-            
+
             # Create an Applicant instance for the logged-in user
-            applicant, created = Applicant.objects.get_or_create(user=request.user)
+            applicant, created = Applicant.objects.get_or_create(
+                user=request.user)
             application.applicant = applicant
-            
+
             application.save()
 
     else:
@@ -52,6 +53,8 @@ def job_details(request, slug):
 
     context = {'job': job_details, 'apply_form': apply_form}
     return render(request, 'job\job_details.html', context)
+
+
 @login_required()
 def add_job(request):
     if request.method == 'POST':
@@ -93,26 +96,18 @@ def delete_job(request, job_id):
     return redirect('jobs:job_list')
 
 
-
-
-
-
-
-
 def get_profiles():
     return Profile.objects.all().annotate(
         average_quality=Avg('rate__RAtingQuality')
     ).order_by('-average_quality', '-id')
 
 
-
-
-
 @login_required()
 def your_jobs(request):
     others = get_profiles()
     jobs_list = Job.objects.filter(owner=request.user)
-    applications = Apply.objects.filter(job__in=jobs_list).select_related('applicant')
+    applications = Apply.objects.filter(
+        job__in=jobs_list).select_related('applicant')
 
     myfilter = JobFilter(request.GET, queryset=jobs_list)
     jobs_list = myfilter.qs
@@ -120,7 +115,6 @@ def your_jobs(request):
     paginator = Paginator(jobs_list, 5)  # Show 5 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
 
     paginator_profiles = Paginator(others, 12)
     page_number_profiles = request.GET.get('page')
