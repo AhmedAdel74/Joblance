@@ -1,6 +1,7 @@
 from django.forms import SlugField
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Job, Apply
+from .models import Job, Apply, Applicant
+
 from django.core.paginator import Paginator
 from .form import ApplyForm, JobForm
 from django.urls import reverse
@@ -38,7 +39,11 @@ def job_details(request, slug):
         if apply_form.is_valid():
             application = apply_form.save(commit=False)
             application.job = job_details
-            application.applicant = request.user
+            
+            # Create an Applicant instance for the logged-in user
+            applicant, created = Applicant.objects.get_or_create(user=request.user)
+            application.applicant = applicant
+            
             application.save()
 
     else:
@@ -46,8 +51,6 @@ def job_details(request, slug):
 
     context = {'job': job_details, 'apply_form': apply_form}
     return render(request, 'job\job_details.html', context)
-
-
 @login_required()
 def add_job(request):
     if request.method == 'POST':
