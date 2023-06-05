@@ -1,13 +1,14 @@
 from django.forms import SlugField
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Job, Apply, Applicant
 
+from profiles.models import Profile
+from .models import Job, Apply, Applicant
 from django.core.paginator import Paginator
 from .form import ApplyForm, JobForm
 from django.urls import reverse
 from .filters import JobFilter
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Avg
 # Create your views here.
 
 
@@ -91,8 +92,25 @@ def delete_job(request, job_id):
         job.delete()
     return redirect('jobs:job_list')
 
+
+
+
+
+
+
+
+def get_profiles():
+    return Profile.objects.all().annotate(
+        average_quality=Avg('rate__RAtingQuality')
+    ).order_by('-average_quality', '-id')
+
+
+
+
+
 @login_required()
 def your_jobs(request):
+    others = get_profiles()
     jobs_list = Job.objects.filter(owner=request.user)
     applications = Apply.objects.filter(job__in=jobs_list).select_related('applicant')
 
@@ -102,9 +120,16 @@ def your_jobs(request):
     paginator = Paginator(jobs_list, 5)  # Show 5 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+
+    paginator_profiles = Paginator(others, 12)
+    page_number_profiles = request.GET.get('page')
+    page_obj_profiles = paginator_profiles.get_page(page_number_profiles)
+
     context = {'jobs': page_obj,
                'forcount': jobs_list,
                'myfilter': myfilter,
                'applications': applications,
+               'users': page_obj_profiles,
                }
     return render(request, 'job/your_jobs.html', context)
