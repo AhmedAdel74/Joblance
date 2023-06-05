@@ -52,10 +52,12 @@
 
 .site-main .site-banner .site-title h1 {
     font-size: 5rem;
+    margin-top: -5px;
 }
 
 .site-main .site-banner .site-title h4 {
     font-size: 1.5rem;
+    margin-top: -50px;
 }
 
 .site-main .site-banner .site-title .banner-image>img {
@@ -73,6 +75,10 @@
     padding: 8rem 5rem;
 }
 
+.site-main .about img{
+    margin-top: 50px;
+}
+
 .site-main .about .about-title h2>span {
     display: block;
     font: normal bold 49px/60px var(--roboto);
@@ -81,7 +87,6 @@
 
 .site-main .about .about-title .paragraph>p {
     padding: 0.4rem 0;
-    filter: brightness(1.1) drop-shadow(3px 8px 30px #388087);
     font-size: 20px;
 }
 

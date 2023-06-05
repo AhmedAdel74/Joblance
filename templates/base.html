@@ -53,9 +53,9 @@
     <Header>
         <div class="container">
             <a href="{% url 'pages:home' %}" class="logo">
-                <h2 style="color: #fff;">Joblance</h2>  
+                <h2 style="color: #fff;">Joblance</h2>
             </a>
-            <ul class="links"> 
+            <ul class="links">
                 <li><a href="#articles">Articles</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#features">Features</a></li>
@@ -67,21 +67,21 @@
                             <img src="{% static 'img/images/megamenu.png' %}" alt="">
                         </div>
                         <ul class="links_one">
-                             <li>
+                            <li>
                                 <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
-                             </li>
-                             <li>
+                            </li>
+                            <li>
                                 <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
-                             </li>
-                             <li>
+                            </li>
+                            <li>
                                 <a href="#services"><i class="far fa-building fa-fw"></i> Services</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="#our-skills"><i class="far fa-check-circle fa-fw"></i> Our Skills</a>
-                             </li>
-                             <li>
+                            </li>
+                            <li>
                                 <a href="#work-steps"><i class="far fa-clipboard fa-fw"></i> How It Works</a>
-                             </li>
+                            </li>
                         </ul>
                         <ul class="links_one">
                             <li>
@@ -103,24 +103,41 @@
                     </div>
                     <!-- End Megamenu -->
                 </li>
+
             </ul>
+            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                <div class="Appointment">
+
+                    {% if request.user.is_authenticated %}
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'profiles:profile' %}">profile</a>
+                    </div>
+                    {% else %}
+                    <div class="d-none d-lg-block">
+                        <a class="boxed-btn3" href="{% url 'registration:signin' %}">Login</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
+
     </Header>
     <!-- header-end -->
-<main>
-    {% block body%}
-    
-    {% endblock body%}
-</main>
+    <main>
+        {% block body%}
+
+        {% endblock body%}
+    </main>
+
+<!--Start Footer-->
+<footer>
+    <div class="container">
 
 
-    <!-- footer start -->
-    <footer>
-        <div class="container">
-            <div class="box">
-               <h3 style="color: #fff;">Joblance</h3>
-               <br>
-               <ul class="social">
+        <div class="box">
+            <h3 style="color: #fff;">Joblance</h3>
+            <br>
+            <ul class="social">
                 <li>
                     <a href="#" class="facebook">
                         <i class="fab fa-facebook-f"></i>
@@ -136,59 +153,62 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </li>
-               </ul>
-               <br>
-                <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
-                </p>
-            </div>
-            <div class="box">
-                <ul class="links">
-                    <li>
-                        <a href="#">Important Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 4</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 5</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="box">
-                <div class="line">
-                    <i class="fas fa-map-marker-alt fa-fw"></i>
-                    <div class="info">
-                    Egypt, Giza, Inside The Sphinx, Room Number 220
-                    </div>
-                </div>
-                <div class="line">
-                        <i class="far fa-clock fa-fw"></i>
-                        <div class="info">
-                            Business Hours: From 10:00 To 18:00
-                        </div>
-                    
-                </div>
-                <div class="line">
-                    <i class="fas fa-phone-volume fa-fw"></i>
-                    <div class="info">
-                        +20123456789
-                        +20198765432
-                    </div>
-                </div>
-            </div>
-
+            </ul>
+            <br>
+            <p class="text">
+                A big world in a small place
+            </p>
         </div>
-        <p class="copyright">Made With &lt;3 By Joblance</p>
-        
-    </footer>
-    <!--/ footer end  -->
+
+      
+        <div class="box">
+            <ul class="links">
+                <li>
+                    <a href="{% url 'features:members' %}">Members</a>
+                </li>
+                <li>
+                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                </li>
+                <li>
+                    <a href="{% url 'profiles:others' %}">Hire Now</a>
+                </li>
+                <li>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                </li>
+                <li>
+                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="line">
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                <div class="info">
+                    Cairo, Egypt
+                </div>
+            </div>
+            <div class="line">
+                <i class="far fa-clock fa-fw"></i>
+                <div class="info">
+                    Joblance Team Working Hours: 08:00-04:00
+                </div>
+
+            </div>
+            <div class="line">
+                <i class="fas fa-phone-volume fa-fw"></i>
+                <div class="info">
+                    +201151261692
+                    +201095625946
+                </div>
+            </div>
+        </div>
+
+    </div>
+   <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a href="{% url 'features:members' %}" target="_blank">Joblance Team</a> </p>
+   
+
+</footer>
+<!--End Footer-->
 
     <!-- link that opens popup -->
     <!-- JS here -->
@@ -225,21 +245,21 @@
     <script src="{% static 'js/main.js' %}"></script>
 
 
-	<script>
-        $( function() {
-            $( "#slider-range" ).slider({
+    <script>
+        $(function () {
+            $("#slider-range").slider({
                 range: true,
                 min: 0,
                 max: 24600,
-                values: [ 750, 24600 ],
-                slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] +"/ Year" );
+                values: [750, 24600],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1] + "/ Year");
                 }
             });
-            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-                " - $" + $( "#slider-range" ).slider( "values", 1 ) + "/ Year");
-        } );
-        </script>
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1) + "/ Year");
+        });
+    </script>
 </body>
 
 </html>

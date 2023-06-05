@@ -49,19 +49,13 @@ img{
     text-align: left;
 }
 h2{
-    
-    
     color: black;
 }
 
-
 label{
-   
-    
-   
    font-size: 10px;
 }
-.info{
+.infomayar{
     margin-top: 10px;
     padding: 20px;
     color: black;
@@ -88,7 +82,7 @@ label{
                padding: 15px 32px; 
                text-align: center; 
                text-decoration: none; 
-               
+               cursor: pointer;
                font-size: 16px; 
                margin: 2px 2px; 
 }
@@ -108,7 +102,7 @@ color: #F6F6F2;
 padding: 15px 32px; 
 text-align: center; 
 text-decoration: none; 
-
+cursor: pointer;
 font-size: 16px; 
 margin: 2px 2px; 
 
@@ -121,3 +115,6 @@ button:hover {
     box-shadow: var(--box-shadow); 
 } 
 
+p{
+    color: black;
+}

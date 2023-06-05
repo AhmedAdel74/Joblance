@@ -7,7 +7,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JobLance</title>
-    <link rel="icon" href="../Main/img/png-file-svg-white-headphone-png-icon-3090554-pngtube-headphones-icon-png-920_916.jpg" />
+    <link rel="icon"
+        href="../Main/img/png-file-svg-white-headphone-png-icon-3090554-pngtube-headphones-icon-png-920_916.jpg" />
 
     <!--google font link-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
@@ -45,13 +46,14 @@
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans:wght@400;700&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <Header>
         <div class="container">
             <a href="{% url 'pages:home' %}" class="logo">
-                <h2 style="color: #fff;">Joblance</h2>  
+                <h2 style="color: #fff;">Joblance</h2>
             </a>
-            <ul class="links"> 
+            <ul class="links">
                 <li><a href="#articles">Articles</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#features">Features</a></li>
@@ -63,21 +65,21 @@
                             <img src="{% static 'img/images/megamenu.png' %}" alt="">
                         </div>
                         <ul class="links_one">
-                             <li>
+                            <li>
                                 <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
-                             </li>
-                             <li>
+                            </li>
+                            <li>
                                 <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
-                             </li>
-                             <li>
+                            </li>
+                            <li>
                                 <a href="#services"><i class="far fa-building fa-fw"></i> Services</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="#our-skills"><i class="far fa-check-circle fa-fw"></i> Our Skills</a>
-                             </li>
-                             <li>
+                            </li>
+                            <li>
                                 <a href="#work-steps"><i class="far fa-clipboard fa-fw"></i> How It Works</a>
-                             </li>
+                            </li>
                         </ul>
                         <ul class="links_one">
                             <li>
@@ -104,17 +106,20 @@
     </Header>
     <br>
     <br>
-<main>
-    {% block body%}
-    
-    {% endblock body%}
-</main>
-    <footer>
-        <div class="container">
-            <div class="box">
-               <h3 style="color: #fff;">Joblance</h3>
-               <br>
-               <ul class="social">
+    <main>
+        {% block body%}
+
+        {% endblock body%}
+    </main>
+<!--Start Footer-->
+<footer>
+    <div class="container">
+
+
+        <div class="box">
+            <h3 style="color: #fff;">Joblance</h3>
+            <br>
+            <ul class="social">
                 <li>
                     <a href="#" class="facebook">
                         <i class="fab fa-facebook-f"></i>
@@ -130,58 +135,62 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </li>
-               </ul>
-               <br>
-                <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus nulla rem, dignissimos iste aspernatur
-                </p>
-            </div>
-            <div class="box">
-                <ul class="links">
-                    <li>
-                        <a href="#">Important Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 4</a>
-                    </li>
-                    <li>
-                        <a href="#">Important Link 5</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="box">
-                <div class="line">
-                    <i class="fas fa-map-marker-alt fa-fw"></i>
-                    <div class="info">
-                    Egypt, Giza, Inside The Sphinx, Room Number 220
-                    </div>
-                </div>
-                <div class="line">
-                        <i class="far fa-clock fa-fw"></i>
-                        <div class="info">
-                            Business Hours: From 10:00 To 18:00
-                        </div>
-                    
-                </div>
-                <div class="line">
-                    <i class="fas fa-phone-volume fa-fw"></i>
-                    <div class="info">
-                        +20123456789
-                        +20198765432
-                    </div>
-                </div>
-            </div>
-
+            </ul>
+            <br>
+            <p class="text">
+                A big world in a small place
+            </p>
         </div>
-        <p class="copyright">Made With &lt;3 By Joblance</p>
-        
-    </footer>
+
+      
+        <div class="box">
+            <ul class="links">
+                <li>
+                    <a href="{% url 'features:members' %}">Members</a>
+                </li>
+                <li>
+                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                </li>
+                <li>
+                    <a href="{% url 'profiles:others' %}">Hire Now</a>
+                </li>
+                <li>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                </li>
+                <li>
+                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="line">
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                <div class="info">
+                    Cairo, Egypt
+                </div>
+            </div>
+            <div class="line">
+                <i class="far fa-clock fa-fw"></i>
+                <div class="info">
+                    Joblance Team Working Hours: 08:00-04:00
+                </div>
+
+            </div>
+            <div class="line">
+                <i class="fas fa-phone-volume fa-fw"></i>
+                <div class="info">
+                    +201151261692
+                    +201095625946
+                </div>
+            </div>
+        </div>
+
+    </div>
+   <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a href="{% url 'features:members' %}" target="_blank">Joblance Team</a> </p>
+   
+
+</footer>
+<!--End Footer-->
     <!--jquery bootstrap-->
     <script src="{% static './js/jquery.3.4.1.js'%}"></script>
     <!--bootsrap js file-->
@@ -197,4 +206,5 @@
     <!--custom js file-->
     <script src="{% static 'js/alaamain.js'%}"></script>
 </body>
+
 </html>
