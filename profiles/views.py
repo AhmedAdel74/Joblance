@@ -169,3 +169,5 @@ def Recommendation_view (request):
     search_words = search_words[::-1]
     # Additional logic goes here
     return render(request, 'profiles/recommendations.html', {'search_words': search_words})
+
+
