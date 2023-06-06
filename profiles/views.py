@@ -164,12 +164,20 @@ def submit_rating(request, rateid):
         
         return redirect('profiles:other', id=rateid)
 
-def Recommendation_view (request):
-    user = request.user  # Assuming the logged-in user is requesting the recommendations
-    search_words = Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True)
-    search_words = search_words[::-1]
-    # Additional logic goes here
-    All_Searched_Words = list(Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True))
-    return render(request, 'profiles/recommendations.html', {'search_words': search_words, 'All_Searched_Words': All_Searched_Words})
+def Recommendation_view(request):
+    if request.method == 'POST':
+        search_words = request.POST.get('search_words', '')  # Assuming the input field name is 'search_words'
+        user = request.user  # Assuming the logged-in user is requesting the recommendations
+
+        # Save the search words to the Recommendation_Model
+        Recommendation_Model.objects.create(User=user, Search_Words=search_words)
+    else:
+        search_words = ''
+        
+    # Retrieve the search words for the user and reverse the order
+    existing_search_words = list(Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True))
+    existing_search_words = existing_search_words[::-1]
+
+    return render(request, 'profiles/recommendations.html', {'search_words': existing_search_words, 'default_search_words': search_words})
 
 
