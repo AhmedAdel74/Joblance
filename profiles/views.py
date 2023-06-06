@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileForm
-from .models import Profile, Rate
+from .models import Profile, Rate, Recommendation_Model
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -163,3 +163,12 @@ def submit_rating(request, rateid):
                 messages.success(request, "The evaluation of the profile has been completed successfully.")
         
         return redirect('profiles:other', id=rateid)
+
+def Recommendation_view (request):
+    user = request.user  # Assuming the logged-in user is requesting the recommendations
+    search_words = Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True)
+    search_words = search_words[::-1]
+    # Additional logic goes here
+    return render(request, 'profiles/recommendations.html', {'search_words': search_words})
+
+

@@ -136,3 +136,21 @@ def create_profile(sender, **kwargs):
 post_save.connect(create_profile, sender=User)
 
 
+class Recommendation_Model (models.Model):
+
+    User         = models.ForeignKey(User , on_delete=models.CASCADE , blank=True, null=True)
+    Search_Words = models.TextField(max_length=1000, null= False, blank= False)
+
+    def __str__(self):
+        return self.Search_Words 
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.User:
+            search_words = Recommendation_Model.objects.filter(User=self.User).order_by('-id')
+
+            if search_words.count() > 5:
+                older_search_words = search_words[5:]
+                for word in older_search_words:
+                    word.delete()
+                    
