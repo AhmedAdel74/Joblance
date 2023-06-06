@@ -139,7 +139,7 @@ post_save.connect(create_profile, sender=User)
 class Recommendation_Model (models.Model):
 
     User         = models.ForeignKey(User , on_delete=models.CASCADE , blank=True, null=True)
-    Search_Words = models.TextField(max_length=1000, null= False, blank= False)
+    Search_Words = models.TextField(max_length=1000, null= True, blank= True)
 
     def __str__(self):
         return self.Search_Words 
