@@ -153,3 +153,4 @@ class Recommendation_Model (models.Model):
                 older_search_words = search_words[5:]
                 for word in older_search_words:
                     word.delete()
+                    
