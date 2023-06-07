@@ -175,7 +175,7 @@ def Recommendation_view (request):
     search_words = Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True)
     search_words = search_words[::-1]
     # Additional logic goes here
-
+ 
     all_searched_words = []
 
     for word in search_words:
