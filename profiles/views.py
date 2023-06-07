@@ -99,11 +99,17 @@ def get_all_profiles():
 
 def others(request):
     query = request.GET.get('q')
-    if query:
-        others = search_profiles(query)
-    else:
+    user = request.user
+
+    if user.is_authenticated and query:
+        Recommendation_Model.objects.create(User=user, Search_Words=query)
+
+    if query :
+        others = search_profiles(query) 
+            
+    else :
         others = get_all_profiles()
-    
+
     paginator = Paginator(others, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -169,7 +175,12 @@ def Recommendation_view (request):
     search_words = Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True)
     search_words = search_words[::-1]
     # Additional logic goes here
-    All_Searched_Words = list(Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True))
-    return render(request, 'profiles/recommendations.html', {'search_words': search_words, 'All_Searched_Words': All_Searched_Words})
+ 
+    all_searched_words = []
 
+    for word in search_words:
+        results = Profile.objects.filter(
+        Q(user__username__icontains=word) )  # Assuming search_profiles() is the function to search in the database
+        all_searched_words += list(results)  # Append the search results to the list
 
+    return render(request, 'profiles/recommendations.html', {'search_words': search_words, 'all_searched_words': all_searched_words})
