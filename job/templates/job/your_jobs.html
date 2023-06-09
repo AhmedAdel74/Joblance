@@ -192,8 +192,7 @@
                                                     {% for application in applications %}
                                                     {% if application.job == job %}
                                                     {% if forloop.counter < 6 %} <div class="location">
-                                                        <a
-                                                            href="{% url 'profiles:other' application.applicant.user.id %}">
+                                                        <a href="{% url 'profiles:other' application.applicant.user.id %}">
                                                             <p> <i
                                                                     class="fa-solid fa-pen-nib"></i>{{application.applicant.user}}
                                                             </p>

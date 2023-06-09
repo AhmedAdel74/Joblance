@@ -15,7 +15,7 @@ from django.db.models import Q, Avg
 def jobs_list(request):
 
     jobs_list = Job.objects.all()
-
+    others = get_profiles()
     # filters
     myfilter = JobFilter(request.GET, queryset=jobs_list)
     jobs_list = myfilter.qs
@@ -24,9 +24,14 @@ def jobs_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+
+    paginator_profiles = Paginator(others, 12)
+    page_number_profiles = request.GET.get('page')
+    page_obj_profiles = paginator_profiles.get_page(page_number_profiles)
     context = {'jobs': page_obj,
                'forcount': jobs_list,
                'myfilter': myfilter,
+               'users': page_obj_profiles,
                }
     return render(request, 'job/jobs_list.html', context)
 
