@@ -351,16 +351,16 @@
 
             <div class="container carousel py-lg-5">
                 <div class="owl-carousel owl-theme">
-                    {% for job in jobs %}
+                    {% for worker in workers %}
 
                     <div class="person row">
                         <div class="col-lg-4 col-md-12 person-img">
-                            <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
+                            <img src="{{worker.image.url}}" alt="img1" />
                         </div>
                         <div class="col-lg-8 col-md-12 person-say">
-                            <h4 class="text-uppercase">{{job.title}}</h4>
+                            <a href="{% url 'features:craftsman_detail' craftsman_id=worker.id %}"><h4 class="text-uppercase">{{worker.name}}</h4></a>
                             <p class="para">
-                                {{job.description}}
+                                {{worker.description}}
                             </p>
                         </div>
                     </div>
@@ -390,18 +390,24 @@
             <div class="container carousel py-lg-5">
                 <div class="owl-carousel owl-theme">
                     {% for job in jobs %}
-
+                    {% if job.owner == user %}
+                    { continue }
+                    {% else %}
+                    
                     <div class="person row">
                         <div class="col-lg-4 col-md-12 person-img">
                             <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
                         </div>
                         <div class="col-lg-8 col-md-12 person-say">
-                            <h4 class="text-uppercase">{{job.title}}</h4>
+                            <a href="{% url 'jobs:job_details' job.slug %}">
+                                <h4 class="text-uppercase">{{job.title}}</h4>
+                            </a>
                             <p class="para">
                                 {{job.description}}
                             </p>
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
