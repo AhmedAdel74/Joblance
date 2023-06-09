@@ -18,4 +18,6 @@ urlpatterns = [
     path('others/', views.others, name='others'),
     path('<int:id>', views.other, name='other'),
     path('<int:rateid>/', views.submit_rating, name='submit_rating'),
+
+    path('recommendations/', views.Recommendation_view, name='Recommendation_view'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

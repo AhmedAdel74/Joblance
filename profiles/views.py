@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileForm
-from .models import Profile, Rate
+from .models import Profile, Rate, Recommendation_Model
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -99,12 +99,21 @@ def get_all_profiles():
 
 def others(request):
     query = request.GET.get('q')
-    if query:
-        others = search_profiles(query)
-    else:
-        others = get_all_profiles()
+    user = request.user
+
+    if user.is_authenticated and query:
+        Recommendation_Model.objects.create(User=user, Search_Words=query)
+
+    if query :
+        others = search_profiles(query) 
+            
+    elif user.is_authenticated:
+        others = Recommendation_view(request)
     
-    paginator = Paginator(others, 12)
+    else :
+        others = get_all_profiles()
+
+    paginator = Paginator(others, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'users': page_obj, 'query': query}
@@ -163,3 +172,27 @@ def submit_rating(request, rateid):
                 messages.success(request, "The evaluation of the profile has been completed successfully.")
         
         return redirect('profiles:other', id=rateid)
+
+def Recommendation_view(request):
+    user = request.user  # Assuming the logged-in user is requesting the recommendations
+    search_words = Recommendation_Model.objects.filter(User=user).values_list('Search_Words', flat=True)
+    search_words = search_words[::-1]
+    # Additional logic goes here
+
+    all_searched_words = set()
+
+    for word in search_words:
+        results = Profile.objects.filter(Q(user__username__icontains=word))  # Assuming search_profiles() is the function to search in the database
+        for profile in results:
+            if profile != user.profile:
+                all_searched_words.add(profile)  # Append the search results to the set excluding the logged-in user's profile
+    
+    all_users = list(get_all_profiles())  # Retrieve all profiles and store them in a list
+
+    combined_list = list(all_searched_words)  # Convert all_searched_words to a list
+
+    for user_profile in all_users:
+        if user_profile not in all_searched_words and user_profile != user.profile:
+            combined_list.append(user_profile)  # Append unique user profiles to the list
+
+    return combined_list
