@@ -15,7 +15,13 @@ def SignupPage(request):
         email = request.POST.get('email')
         pass1 = request.POST.get('password1')
         # pass2=request.POST.get('password2')
-        if User.objects.filter(username=uname).exists() == True or User.objects.filter(email=email).exists() == True:
+        if uname == "":
+            messages.error(request, "Username is required.")
+        elif pass1 == "":
+            messages.error(request, "Password is required.")
+        elif email == "":
+            messages.error(request, "email is required.")
+        elif User.objects.filter(username=uname).exists() == True or User.objects.filter(email=email).exists() == True:
             messages.info(
                 request, f"We regret to inform you that the selected username {uname} or email {email} is already registered in our system. We kindly request that you choose a different username and email address.")
         elif form.is_valid():
@@ -26,12 +32,6 @@ def SignupPage(request):
             login(request, user)
             messages.success(request, 'Account created successfully!')
             return redirect('profiles:profile')
-        elif uname == "":
-            messages.error(request, "Username is required.")
-        elif pass1 == "":
-            messages.error(request, "Password is required.")
-        elif email == "":
-            messages.error(request, "email is required.")
         
         else:
             messages.error(
