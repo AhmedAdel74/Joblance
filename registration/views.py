@@ -34,8 +34,9 @@ def SignupPage(request):
             return redirect('profiles:profile')
         
         else:
-            messages.error(
-                request, f'Please correct the errors below.  {form.error_messages}')
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field}: {error}')
     else:
         form = SignupForm()
 
