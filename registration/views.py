@@ -31,8 +31,8 @@ def SignupPage(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, 'Account created successfully!')
-            return redirect('profiles:profile')
-        
+            return redirect('profiles:edite')
+
         else:
             for field, errors in form.errors.items():
                 for error in errors:
@@ -41,7 +41,6 @@ def SignupPage(request):
         form = SignupForm()
 
     return render(request, 'registration\signup.html', {'form': form})
-
 
 
 def LoginPage(request):
@@ -58,7 +57,8 @@ def LoginPage(request):
             user = User.objects.filter(username=username).first()
         # loop through all User objects in the Login module
         if user is not None:
-            user = authenticate(request, username=user.username, password=password)
+            user = authenticate(
+                request, username=user.username, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(
@@ -66,7 +66,7 @@ def LoginPage(request):
                 return redirect('pages:home')
 
                 # username and/or password do not exist, so return an error response
-            
+
         messages.warning(
             request, f"Authentication failed due to either an incorrect username or password, or the non-existence of a user with the username '{username}'.")
         return render(request, 'registration\login.html')

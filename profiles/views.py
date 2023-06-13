@@ -132,6 +132,7 @@ def other(request, id):
                 }
     return render(request, 'profiles/other.html', context)
 
+@login_required()
 def submit_rating(request, rateid):
     if request.method == 'POST':
         user = request.user

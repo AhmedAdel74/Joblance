@@ -26,7 +26,7 @@ def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return '{1}'.format(instance.user.id, filename)
 
-    
+
 class Profile(models.Model):
     # بتستدعى ال attribute دة
     ##
@@ -49,36 +49,43 @@ class Profile(models.Model):
                           max_length=40, default='none')
     file = models.FileField(upload_to=user_directory_path,
                             max_length=40, default='none')
-    face=models.CharField(null=False,blank=False, max_length=200)
-    
+    face = models.CharField(null=False, blank=False, max_length=200)
+
     class Meta:
         ordering = ['-id']
 
     def __str__(self):
         return str(self.user)
-    
+
     face_name = models.CharField(null=True, blank=True, max_length=200)
 
     def average_quality(self):
-         review = Rate.objects.filter(RA_Other=self).aggregate(average=Avg('RAtingQuality'))
-         avg = 0
-         if review["average"] is not None:
-             avg = float(review["average"])
-         return avg
+        review = Rate.objects.filter(RA_Other=self).aggregate(
+            average=Avg('RAtingQuality'))
+        avg = 0
+        if review["average"] is not None:
+            avg = float(review["average"])
+        return avg
+
     def average_speed(self):
-         review = Rate.objects.filter(RA_Other=self).aggregate(average=Avg('RAtingSpeed'))
-         avg = 0
-         if review["average"] is not None:
-             avg = float(review["average"])
-         return avg
+        review = Rate.objects.filter(RA_Other=self).aggregate(
+            average=Avg('RAtingSpeed'))
+        avg = 0
+        if review["average"] is not None:
+            avg = float(review["average"])
+        return avg
+
     def average_moralistic(self):
-         review = Rate.objects.filter(RA_Other=self).aggregate(average=Avg('RAtingMoralistic'))
-         avg = 0
-         if review["average"] is not None:
-             avg = float(review["average"])
-         return avg
+        review = Rate.objects.filter(RA_Other=self).aggregate(
+            average=Avg('RAtingMoralistic'))
+        avg = 0
+        if review["average"] is not None:
+            avg = float(review["average"])
+        return avg
+
     def count_review(self):
-        reviews = Rate.objects.filter(RA_Other=self).aggregate(count=Count('id'))
+        reviews = Rate.objects.filter(
+            RA_Other=self).aggregate(count=Count('id'))
         cnt = 0
         if reviews["count"] is not None:
             cnt = int(reviews["count"])
@@ -96,9 +103,6 @@ class Profile(models.Model):
             self.face_name = name
         super().save(*args, **kwargs)
 
-
-    
-
     # def save(self):
         # super().save()
 
@@ -108,19 +112,18 @@ class Profile(models.Model):
         # output_size = (300,300)
         # img.thumbnail(output_size)
         # img.save(self.image.path)
-    
 
 
 class Rate(models.Model):
 
-    RAUser           = models.ForeignKey(User , on_delete=models.CASCADE , blank=True, null=True ,verbose_name=_("User"))
-    RA_Other         = models.ForeignKey('Profile' , on_delete=models.CASCADE , blank=True, null=True ,verbose_name=_("Profile"))
-    RAtingQuality    = models.IntegerField(default='0')
-    RAtingSpeed      = models.IntegerField(default='0')
+    RAUser = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True, verbose_name=_("User"))
+    RA_Other = models.ForeignKey(
+        'Profile', on_delete=models.CASCADE, blank=True, null=True, verbose_name=_("Profile"))
+    RAtingQuality = models.IntegerField(default='0')
+    RAtingSpeed = models.IntegerField(default='0')
     RAtingMoralistic = models.IntegerField(default='0')
-    RADescription    = models.TextField(max_length=10000 , blank=True, null=True )
-
-    
+    RADescription = models.TextField(max_length=10000, blank=True, null=True)
 
     def __str__(self):
         return f"{self.RAUser} reviewed  {self.RA_Other}"
@@ -133,21 +136,24 @@ def create_profile(sender, **kwargs):
         except Exception as e:
             print(f"Error saving profile: {str(e)}")
 
+
 post_save.connect(create_profile, sender=User)
 
 
 class Recommendation_Model (models.Model):
 
-    User         = models.ForeignKey(User , on_delete=models.CASCADE , blank=True, null=True)
-    Search_Words = models.TextField(max_length=1000, null= True, blank= True)
+    User = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True)
+    Search_Words = models.TextField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
-        return self.Search_Words 
-    
+        return self.Search_Words
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if self.User:
-            search_words = Recommendation_Model.objects.filter(User=self.User).order_by('-id')
+            search_words = Recommendation_Model.objects.filter(
+                User=self.User).order_by('-id')
 
             if search_words.count() > 5:
                 older_search_words = search_words[5:]

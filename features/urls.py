@@ -7,11 +7,13 @@ app_name = 'features'
 urlpatterns = [
     path('members/', views.members, name='members'),
     path('craftsmen/', views.craftsmen, name='craftsmen'),
-    path('craftsman_detail/<int:craftsman_id>/', views.craftsman_detail, name='craftsman_detail'),
+    path('craftsman_detail/<int:craftsman_id>/',
+         views.craftsman_detail, name='craftsman_detail'),
     path('AboutUs/', views.about_us, name='AboutUs'),
     path('career/', views.career, name='career'),
     path('interview/', views.interview, name='interview'),
-    path('submit_rating/<int:craftsmanId>/', views.submit_rating, name='submit_rating'),
+    path('submit_rating/<int:craftsmanId>/',
+         views.submit_rating, name='submit_rating'),
 
 ]
 

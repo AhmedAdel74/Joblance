@@ -241,7 +241,7 @@
 
                 <!--------------------start pictures area--------------------------->
 
-    <!--
+                <!--
                 <section id="Photos" class="pictures-area" data-aos="fade-up" data-aos-offset="500"
                     data-aos-easing="ease-in-sine">
                     <div class="container ">
@@ -335,90 +335,93 @@
             </div>
         </section>
     -->
-        <!--------------------end pictures area-------------------------->
+                <!--------------------end pictures area-------------------------->
 
                 <section class="they-say" data-aos="fade-up" data-aos-offset="500" data-aos-easing="ease-in-sine">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-12">
-                        <div class="they-say-title">
-                            <h1 class="text-uppercase title-h1">Take a look at some of the traditional crafts at Joblance!</h1>
-                            <p class="para"> Hire one now! </p>
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-12">
+                                <div class="they-say-title">
+                                    <h1 class="text-uppercase title-h1">Take a look at some of the traditional crafts at
+                                        Joblance!</h1>
+                                    <p class="para"> Hire one now! </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="container carousel py-lg-5">
-                <div class="owl-carousel owl-theme">
-                    {% for worker in workers %}
+                    <div class="container carousel py-lg-5">
+                        <div class="owl-carousel owl-theme">
+                            {% for worker in workers %}
 
-                    <div class="person row">
-                        <div class="col-lg-4 col-md-12 person-img">
-                            <img src="{{worker.image.url}}" alt="img1" />
-                        </div>
-                        <div class="col-lg-8 col-md-12 person-say">
-                            <a href="{% url 'features:craftsman_detail' craftsman_id=worker.id %}"><h4 class="text-uppercase">{{worker.name}}</h4></a>
-                            <p class="para">
-                                {{worker.description}}
-                            </p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section> 
-
-
-
-
-        <!--------------------start they say -------------------------->
-
-        <section class="they-say" data-aos="fade-up" data-aos-offset="500" data-aos-easing="ease-in-sine">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-12">
-                        <div class="they-say-title">
-                            <h1 class="text-uppercase title-h1">Change the wolrd in one tap</h1>
-                            <p class="para">
-                                Here's your chance to the world, get it now!</p>
+                            <div class="person row">
+                                <div class="col-lg-4 col-md-12 person-img">
+                                    <img src="{{worker.image.url}}" alt="img1" />
+                                </div>
+                                <div class="col-lg-8 col-md-12 person-say">
+                                    <a href="{% url 'features:craftsman_detail' craftsman_id=worker.id %}">
+                                        <h4 class="text-uppercase">{{worker.name}}</h4>
+                                    </a>
+                                    <p class="para">
+                                        {{worker.description}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div>
-            </div>
+                </section>
 
-            <div class="container carousel py-lg-5">
-                <div class="owl-carousel owl-theme">
-                    {% for job in jobs %}
-                    {% if job.owner == user %}
-                    {{ continue }}
-                    {% else %}
-                    
-                    <div class="person row">
-                        <div class="col-lg-4 col-md-12 person-img">
-                            <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
-                        </div>
-                        <div class="col-lg-8 col-md-12 person-say">
-                            <a href="{% url 'jobs:job_details' job.slug %}">
-                                <h4 class="text-uppercase">{{job.title}}</h4>
-                            </a>
-                            <p class="para">
-                                {{job.description}}
-                            </p>
+
+
+
+                <!--------------------start they say -------------------------->
+
+                <section class="they-say" data-aos="fade-up" data-aos-offset="500" data-aos-easing="ease-in-sine">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-12">
+                                <div class="they-say-title">
+                                    <h1 class="text-uppercase title-h1">Change the wolrd in one tap</h1>
+                                    <p class="para">
+                                        Here's your chance to the world, get it now!</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-        <!--------------------end they say-------------------------->
+
+                    <div class="container carousel py-lg-5">
+                        <div class="owl-carousel owl-theme">
+                            {% for job in jobs %}
+                            {% if job.owner == user %}
+                            {{ continue }}
+                            {% else %}
+
+                            <div class="person row">
+                                <div class="col-lg-4 col-md-12 person-img">
+                                    <img src="{% static 'img/testimonials/t15.jpg' %}" alt="img1" />
+                                </div>
+                                <div class="col-lg-8 col-md-12 person-say">
+                                    <a href="{% url 'jobs:job_details' job.slug %}">
+                                        <h4 class="text-uppercase">{{job.title}}</h4>
+                                    </a>
+                                    <p class="para">
+                                        {{job.description}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <!--------------------end they say-------------------------->
 
     </main>
 
     <div class="spikes"></div>
 
-   <!--Start Footer-->
+    <!--Start Footer-->
     <footer>
         <div class="container">
 
@@ -449,7 +452,7 @@
                 </p>
             </div>
 
-          
+
             <div class="box">
                 <ul class="links">
                     <li>
@@ -493,7 +496,11 @@
             </div>
 
         </div>
-       <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made<i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{% url 'features:members' %}" target="_blank">Joblance Team</a> </p>
+        <p class="copyright">Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | Made<i
+                class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{% url 'features:members' %}"
+                target="_blank">Joblance Team</a>
+        </p>
     </footer>
     <!--End Footer-->
 
