@@ -17,18 +17,16 @@
     <link rel="stylesheet" href="{% static 'css/craftsmen.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <link rel="stylesheet" href="{% static 'css/rating.css'%}">
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {% comment %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {%
-    endcomment %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -62,19 +60,16 @@
                                 <a href="{% url 'jobs:add_job' %}"><i class="far fa-clipboard fa-fw"></i>Post a job</a>
                             </li>
                             <li>
-                                <a href="{% url 'features:AboutUs' %}"><i class="far fa-chart-bar fa-fw"></i>About
-                                    Us</a>
+                                <a href="{% url 'features:AboutUs' %}"><i class="far fa-chart-bar fa-fw"></i>About Us</a>
                             </li>
-
+                            
                             <li>
-                                <a href="{% url 'features:career' %}"><i class="far fa-comments fa-fw"></i>Career
-                                    Advices</a>
-                            </li>
+                                <a href="{% url 'features:career' %}"><i class="far fa-comments fa-fw"></i>Career Advices</a>
+                             </li>
                         </ul>
                         <ul class="links_one">
                             <li>
-                                <a href="{% url 'features:craftsmen' %}"><i
-                                        class="far fa-building fa-fw"></i>Craftsmen</a>
+                                <a href="{% url 'features:craftsmen' %}"><i class="far fa-building fa-fw"></i>Craftsmen</a>
                             </li>
 
                             <li>
@@ -82,9 +77,8 @@
                                     feedback</a>
                             </li>
                             <li>
-                                <a href="{% url 'features:interview' %}"><i class="far fa-comments fa-fw"></i>Interview
-                                    Tips</a>
-                            </li>
+                                <a href="{% url 'features:interview' %}"><i class="far fa-comments fa-fw"></i>Interview Tips</a>
+                             </li>
                         </ul>
                     </div>
                     <!-- End Megamenu -->
@@ -182,8 +176,7 @@
                 <div class="info">
                 </div>
                 <div class="d-none d-lg-block p-5">
-                    <a href="{% url 'features:craftsman_detail' craftsman_id=worker.id %}" class="boxed-btn3">Add a
-                        review</a>
+                    <a href="{% url 'features:craftsman_detail' craftsman_id=worker.id %}" class="boxed-btn3">Add a review</a>
                 </div>
 
             </div>
@@ -209,28 +202,23 @@
         </div>
         <div class="container">
             {% for item in top_rate %}
-            <div class="box">
-                <img src="{{ item.image.url }} " alt="">
-                <h2>{{ item.name }}</h2>
-                <span class="job">{{ item.profession }}</span>
-                <div class="review-feedback BQ">
-
-                    <span
-                        class="fa {% if item.average_review == 0.5 %}fa-star-half-full {% elif item.average_review < 0.5 %}fa fa-star{% elif  item.average_review > 0.5 %}fa fa-star-full{% endif %}"></span>
-                    <span
-                        class="fa {% if item.average_review == 1.5 %}fa-star-half-full {% elif item.average_review < 1.5 %}fa fa-star{% elif  item.average_review > 1.5 %}fa fa-star-full{% endif %}"></span>
-                    <span
-                        class="fa {% if item.average_review == 2.5 %}fa-star-half-full {% elif item.average_review < 2.5 %}fa fa-star{% elif  item.average_review > 2.5 %}fa fa-star-full{% endif %}"></span>
-                    <span
-                        class="fa {% if item.average_review == 3.5 %}fa-star-half-full {% elif item.average_review < 3.5 %}fa fa-star{% elif  item.average_review > 3.5 %}fa fa-star-full{% endif %}"></span>
-                    <span
-                        class="fa {% if item.average_review == 4.5 %}fa-star-half-full {% elif item.average_review < 4.5 %}fa fa-star{% elif  item.average_review > 4.5 %}fa fa-star-full{% endif %}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{item.average_review | stringformat:".1f"}} / 5
+                <div class="box">
+                    <img src="{{ item.image.url }} " alt="">
+                    <h2>{{ item.name }}</h2>
+                    <span class="job">{{ item.profession }}</span>
+                    <div class="review-feedback BQ">
+                    
+                        <span class="fa {% if item.average_review == 0.5 %}fa-star-half-full {% elif item.average_review < 0.5 %}fa fa-star{% elif  item.average_review > 0.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if item.average_review == 1.5 %}fa-star-half-full {% elif item.average_review < 1.5 %}fa fa-star{% elif  item.average_review > 1.5 %}fa fa-star-full{% endif %}"></span>                    
+                        <span class="fa {% if item.average_review == 2.5 %}fa-star-half-full {% elif item.average_review < 2.5 %}fa fa-star{% elif  item.average_review > 2.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if item.average_review == 3.5 %}fa-star-half-full {% elif item.average_review < 3.5 %}fa fa-star{% elif  item.average_review > 3.5 %}fa fa-star-full{% endif %}"></span>
+                        <span class="fa {% if item.average_review == 4.5 %}fa-star-half-full {% elif item.average_review < 4.5 %}fa fa-star{% elif  item.average_review > 4.5 %}fa fa-star-full{% endif %}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{item.average_review | stringformat:".1f"}} / 5
+                    </div>
+                    <br>
+                    <br>
+                    <p>{{ item.description }}</p>
                 </div>
-                <br>
-                <br>
-                <p>{{ item.description }}</p>
-            </div>
             {% endfor %}
             {% comment %} <div class="box">
 
@@ -338,89 +326,86 @@
     <div class="spikes"></div>
 
 
-    <!--Start Footer-->
-    <footer>
-        <div class="container">
+<!--Start Footer-->
+<footer>
+    <div class="container">
 
 
-            <div class="box">
-                <h3 style="color: #fff;">Joblance</h3>
-                <br>
-                <ul class="social">
-                    <li>
-                        <a href="#" class="facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="youtube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                </ul>
-                <br>
-                <p class="text">
-                    A big world in a small place
-                </p>
-            </div>
-
-
-            <div class="box">
-                <ul class="links">
-                    <li>
-                        <a href="{% url 'features:members' %}">Members</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'jobs:job_list' %}">Find a Job</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'profiles:others' %}">Hire Now</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="box">
-                <div class="line">
-                    <i class="fas fa-map-marker-alt fa-fw"></i>
-                    <div class="info">
-                        Cairo, Egypt
-                    </div>
-                </div>
-                <div class="line">
-                    <i class="far fa-clock fa-fw"></i>
-                    <div class="info">
-                        Joblance Team Working Hours: 08:00-04:00
-                    </div>
-
-                </div>
-                <div class="line">
-                    <i class="fas fa-phone-volume fa-fw"></i>
-                    <div class="info">
-                        +201151261692
-                        +201095625946
-                    </div>
-                </div>
-            </div>
-
+        <div class="box">
+            <h3 style="color: #fff;">Joblance</h3>
+            <br>
+            <ul class="social">
+                <li>
+                    <a href="#" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <p class="text">
+                A big world in a small place
+            </p>
         </div>
-        <p class="copyright">Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a
-                href="{% url 'features:members' %}" target="_blank">Joblance Team</a>
-        </p>
 
+      
+        <div class="box">
+            <ul class="links">
+                <li>
+                    <a href="{% url 'features:members' %}">Members</a>
+                </li>
+                <li>
+                    <a href="{% url 'jobs:job_list' %}">Find a Job</a>
+                </li>
+                <li>
+                    <a href="{% url 'profiles:others' %}">Hire Now</a>
+                </li>
+                <li>
+                    <a href="{% url 'features:craftsmen' %}">Craftsmen</a>
+                </li>
+                <li>
+                    <a href="{% url 'pages:feedback' %}"><i></i>Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="line">
+                <i class="fas fa-map-marker-alt fa-fw"></i>
+                <div class="info">
+                    Cairo, Egypt
+                </div>
+            </div>
+            <div class="line">
+                <i class="far fa-clock fa-fw"></i>
+                <div class="info">
+                    Joblance Team Working Hours: 08:00-04:00
+                </div>
 
-    </footer>
-    <!--End Footer-->
+            </div>
+            <div class="line">
+                <i class="fas fa-phone-volume fa-fw"></i>
+                <div class="info">
+                    +201151261692
+                    +201095625946
+                </div>
+            </div>
+        </div>
+
+    </div>
+   <p class="copyright">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <a href="{% url 'features:members' %}" target="_blank">Joblance Team</a> </p>
+   
+
+</footer>
+<!--End Footer-->
 
 
 </body>
